@@ -1,0 +1,57 @@
+body {
+    background-color: skyblue;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-image: url('/assets/img/pemda.png');
+    background-position-x: -200px;
+    background-repeat: no-repeat;
+    background-size: 1980px;
+}
+
+.wrapper {
+    width: 100%;
+    color: white;
+}
+
+.salam {
+    text-align: center;
+    padding-top: 80px;
+    font-size: 50px;
+    font-weight: bold;
+    text-shadow: 0 0 3px #645858, 0 0 5px #414153;
+}
+
+.sub-salam {
+    font-size: 40px;
+}
+
+.peta {
+    text-align: center;
+    position: relative;
+}
+
+.gambar-peta {
+    margin-top: -50px;
+    right: 30%;
+    transform: rotateX(60deg);
+    position: absolute;
+}
+
+.titik {
+    position: absolute;
+    width: 30px;
+}
+
+.bayongbong {
+    top: 230px;
+    margin-left: 30px;
+}
+
+.cisurupan {
+    top: 230px;
+    margin-left: -30px;
+}
+
+.cilawu {
+    top: 230px;
+    margin-left: 80px;
+}
