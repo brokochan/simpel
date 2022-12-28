@@ -676,8 +676,12 @@ class izin_non_oss_add extends izin_non_oss
 		$this->createToken();
 
 		// Set up lookup cache
-		// Check modal
+		$this->setupLookupOptions($this->id_jenis_izin);
+		$this->setupLookupOptions($this->id_jbu);
+		$this->setupLookupOptions($this->id_sektor);
+		$this->setupLookupOptions($this->id_subsektor);
 
+		// Check modal
 		if ($this->IsModal)
 			$SkipHeaderFooter = TRUE;
 		$this->IsMobileOrModal = IsMobile() || $this->IsModal;
@@ -1115,12 +1119,33 @@ class izin_non_oss_add extends izin_non_oss
 			$this->no_izin->ViewCustomAttributes = "";
 
 			// id_jenis_izin
-			$this->id_jenis_izin->ViewValue = $this->id_jenis_izin->CurrentValue;
-			$this->id_jenis_izin->ViewValue = FormatNumber($this->id_jenis_izin->ViewValue, 0, -2, -2, -2);
+			$curVal = strval($this->id_jenis_izin->CurrentValue);
+			if ($curVal != "") {
+				$this->id_jenis_izin->ViewValue = $this->id_jenis_izin->lookupCacheOption($curVal);
+				if ($this->id_jenis_izin->ViewValue === NULL) { // Lookup from database
+					$filterWrk = "`id_jenis_izin`" . SearchString("=", $curVal, DATATYPE_NUMBER, "");
+					$sqlWrk = $this->id_jenis_izin->Lookup->getSql(FALSE, $filterWrk, '', $this);
+					$rswrk = Conn()->execute($sqlWrk);
+					if ($rswrk && !$rswrk->EOF) { // Lookup values found
+						$arwrk = [];
+						$arwrk[1] = $rswrk->fields('df');
+						$this->id_jenis_izin->ViewValue = $this->id_jenis_izin->displayValue($arwrk);
+						$rswrk->Close();
+					} else {
+						$this->id_jenis_izin->ViewValue = $this->id_jenis_izin->CurrentValue;
+					}
+				}
+			} else {
+				$this->id_jenis_izin->ViewValue = NULL;
+			}
 			$this->id_jenis_izin->ViewCustomAttributes = "";
 
 			// jenis_pemohon
-			$this->jenis_pemohon->ViewValue = $this->jenis_pemohon->CurrentValue;
+			if (strval($this->jenis_pemohon->CurrentValue) != "") {
+				$this->jenis_pemohon->ViewValue = $this->jenis_pemohon->optionCaption($this->jenis_pemohon->CurrentValue);
+			} else {
+				$this->jenis_pemohon->ViewValue = NULL;
+			}
 			$this->jenis_pemohon->ViewCustomAttributes = "";
 
 			// nama_pemohon
@@ -1128,18 +1153,69 @@ class izin_non_oss_add extends izin_non_oss
 			$this->nama_pemohon->ViewCustomAttributes = "";
 
 			// id_jbu
-			$this->id_jbu->ViewValue = $this->id_jbu->CurrentValue;
-			$this->id_jbu->ViewValue = FormatNumber($this->id_jbu->ViewValue, 0, -2, -2, -2);
+			$curVal = strval($this->id_jbu->CurrentValue);
+			if ($curVal != "") {
+				$this->id_jbu->ViewValue = $this->id_jbu->lookupCacheOption($curVal);
+				if ($this->id_jbu->ViewValue === NULL) { // Lookup from database
+					$filterWrk = "`id_jbu`" . SearchString("=", $curVal, DATATYPE_NUMBER, "");
+					$sqlWrk = $this->id_jbu->Lookup->getSql(FALSE, $filterWrk, '', $this);
+					$rswrk = Conn()->execute($sqlWrk);
+					if ($rswrk && !$rswrk->EOF) { // Lookup values found
+						$arwrk = [];
+						$arwrk[1] = $rswrk->fields('df');
+						$this->id_jbu->ViewValue = $this->id_jbu->displayValue($arwrk);
+						$rswrk->Close();
+					} else {
+						$this->id_jbu->ViewValue = $this->id_jbu->CurrentValue;
+					}
+				}
+			} else {
+				$this->id_jbu->ViewValue = NULL;
+			}
 			$this->id_jbu->ViewCustomAttributes = "";
 
 			// id_sektor
-			$this->id_sektor->ViewValue = $this->id_sektor->CurrentValue;
-			$this->id_sektor->ViewValue = FormatNumber($this->id_sektor->ViewValue, 0, -2, -2, -2);
+			$curVal = strval($this->id_sektor->CurrentValue);
+			if ($curVal != "") {
+				$this->id_sektor->ViewValue = $this->id_sektor->lookupCacheOption($curVal);
+				if ($this->id_sektor->ViewValue === NULL) { // Lookup from database
+					$filterWrk = "`id_sektor`" . SearchString("=", $curVal, DATATYPE_NUMBER, "");
+					$sqlWrk = $this->id_sektor->Lookup->getSql(FALSE, $filterWrk, '', $this);
+					$rswrk = Conn()->execute($sqlWrk);
+					if ($rswrk && !$rswrk->EOF) { // Lookup values found
+						$arwrk = [];
+						$arwrk[1] = $rswrk->fields('df');
+						$this->id_sektor->ViewValue = $this->id_sektor->displayValue($arwrk);
+						$rswrk->Close();
+					} else {
+						$this->id_sektor->ViewValue = $this->id_sektor->CurrentValue;
+					}
+				}
+			} else {
+				$this->id_sektor->ViewValue = NULL;
+			}
 			$this->id_sektor->ViewCustomAttributes = "";
 
 			// id_subsektor
-			$this->id_subsektor->ViewValue = $this->id_subsektor->CurrentValue;
-			$this->id_subsektor->ViewValue = FormatNumber($this->id_subsektor->ViewValue, 0, -2, -2, -2);
+			$curVal = strval($this->id_subsektor->CurrentValue);
+			if ($curVal != "") {
+				$this->id_subsektor->ViewValue = $this->id_subsektor->lookupCacheOption($curVal);
+				if ($this->id_subsektor->ViewValue === NULL) { // Lookup from database
+					$filterWrk = "`id_subsektor`" . SearchString("=", $curVal, DATATYPE_NUMBER, "");
+					$sqlWrk = $this->id_subsektor->Lookup->getSql(FALSE, $filterWrk, '', $this);
+					$rswrk = Conn()->execute($sqlWrk);
+					if ($rswrk && !$rswrk->EOF) { // Lookup values found
+						$arwrk = [];
+						$arwrk[1] = $rswrk->fields('df');
+						$this->id_subsektor->ViewValue = $this->id_subsektor->displayValue($arwrk);
+						$rswrk->Close();
+					} else {
+						$this->id_subsektor->ViewValue = $this->id_subsektor->CurrentValue;
+					}
+				}
+			} else {
+				$this->id_subsektor->ViewValue = NULL;
+			}
 			$this->id_subsektor->ViewCustomAttributes = "";
 
 			// tanggal_izin
@@ -1255,16 +1331,30 @@ class izin_non_oss_add extends izin_non_oss
 			// id_jenis_izin
 			$this->id_jenis_izin->EditAttrs["class"] = "form-control";
 			$this->id_jenis_izin->EditCustomAttributes = "";
-			$this->id_jenis_izin->EditValue = HtmlEncode($this->id_jenis_izin->CurrentValue);
-			$this->id_jenis_izin->PlaceHolder = RemoveHtml($this->id_jenis_izin->caption());
+			$curVal = trim(strval($this->id_jenis_izin->CurrentValue));
+			if ($curVal != "")
+				$this->id_jenis_izin->ViewValue = $this->id_jenis_izin->lookupCacheOption($curVal);
+			else
+				$this->id_jenis_izin->ViewValue = $this->id_jenis_izin->Lookup !== NULL && is_array($this->id_jenis_izin->Lookup->Options) ? $curVal : NULL;
+			if ($this->id_jenis_izin->ViewValue !== NULL) { // Load from cache
+				$this->id_jenis_izin->EditValue = array_values($this->id_jenis_izin->Lookup->Options);
+			} else { // Lookup from database
+				if ($curVal == "") {
+					$filterWrk = "0=1";
+				} else {
+					$filterWrk = "`id_jenis_izin`" . SearchString("=", $this->id_jenis_izin->CurrentValue, DATATYPE_NUMBER, "");
+				}
+				$sqlWrk = $this->id_jenis_izin->Lookup->getSql(TRUE, $filterWrk, '', $this);
+				$rswrk = Conn()->execute($sqlWrk);
+				$arwrk = $rswrk ? $rswrk->getRows() : [];
+				if ($rswrk)
+					$rswrk->close();
+				$this->id_jenis_izin->EditValue = $arwrk;
+			}
 
 			// jenis_pemohon
-			$this->jenis_pemohon->EditAttrs["class"] = "form-control";
 			$this->jenis_pemohon->EditCustomAttributes = "";
-			if (!$this->jenis_pemohon->Raw)
-				$this->jenis_pemohon->CurrentValue = HtmlDecode($this->jenis_pemohon->CurrentValue);
-			$this->jenis_pemohon->EditValue = HtmlEncode($this->jenis_pemohon->CurrentValue);
-			$this->jenis_pemohon->PlaceHolder = RemoveHtml($this->jenis_pemohon->caption());
+			$this->jenis_pemohon->EditValue = $this->jenis_pemohon->options(FALSE);
 
 			// nama_pemohon
 			$this->nama_pemohon->EditAttrs["class"] = "form-control";
@@ -1277,20 +1367,74 @@ class izin_non_oss_add extends izin_non_oss
 			// id_jbu
 			$this->id_jbu->EditAttrs["class"] = "form-control";
 			$this->id_jbu->EditCustomAttributes = "";
-			$this->id_jbu->EditValue = HtmlEncode($this->id_jbu->CurrentValue);
-			$this->id_jbu->PlaceHolder = RemoveHtml($this->id_jbu->caption());
+			$curVal = trim(strval($this->id_jbu->CurrentValue));
+			if ($curVal != "")
+				$this->id_jbu->ViewValue = $this->id_jbu->lookupCacheOption($curVal);
+			else
+				$this->id_jbu->ViewValue = $this->id_jbu->Lookup !== NULL && is_array($this->id_jbu->Lookup->Options) ? $curVal : NULL;
+			if ($this->id_jbu->ViewValue !== NULL) { // Load from cache
+				$this->id_jbu->EditValue = array_values($this->id_jbu->Lookup->Options);
+			} else { // Lookup from database
+				if ($curVal == "") {
+					$filterWrk = "0=1";
+				} else {
+					$filterWrk = "`id_jbu`" . SearchString("=", $this->id_jbu->CurrentValue, DATATYPE_NUMBER, "");
+				}
+				$sqlWrk = $this->id_jbu->Lookup->getSql(TRUE, $filterWrk, '', $this);
+				$rswrk = Conn()->execute($sqlWrk);
+				$arwrk = $rswrk ? $rswrk->getRows() : [];
+				if ($rswrk)
+					$rswrk->close();
+				$this->id_jbu->EditValue = $arwrk;
+			}
 
 			// id_sektor
 			$this->id_sektor->EditAttrs["class"] = "form-control";
 			$this->id_sektor->EditCustomAttributes = "";
-			$this->id_sektor->EditValue = HtmlEncode($this->id_sektor->CurrentValue);
-			$this->id_sektor->PlaceHolder = RemoveHtml($this->id_sektor->caption());
+			$curVal = trim(strval($this->id_sektor->CurrentValue));
+			if ($curVal != "")
+				$this->id_sektor->ViewValue = $this->id_sektor->lookupCacheOption($curVal);
+			else
+				$this->id_sektor->ViewValue = $this->id_sektor->Lookup !== NULL && is_array($this->id_sektor->Lookup->Options) ? $curVal : NULL;
+			if ($this->id_sektor->ViewValue !== NULL) { // Load from cache
+				$this->id_sektor->EditValue = array_values($this->id_sektor->Lookup->Options);
+			} else { // Lookup from database
+				if ($curVal == "") {
+					$filterWrk = "0=1";
+				} else {
+					$filterWrk = "`id_sektor`" . SearchString("=", $this->id_sektor->CurrentValue, DATATYPE_NUMBER, "");
+				}
+				$sqlWrk = $this->id_sektor->Lookup->getSql(TRUE, $filterWrk, '', $this);
+				$rswrk = Conn()->execute($sqlWrk);
+				$arwrk = $rswrk ? $rswrk->getRows() : [];
+				if ($rswrk)
+					$rswrk->close();
+				$this->id_sektor->EditValue = $arwrk;
+			}
 
 			// id_subsektor
 			$this->id_subsektor->EditAttrs["class"] = "form-control";
 			$this->id_subsektor->EditCustomAttributes = "";
-			$this->id_subsektor->EditValue = HtmlEncode($this->id_subsektor->CurrentValue);
-			$this->id_subsektor->PlaceHolder = RemoveHtml($this->id_subsektor->caption());
+			$curVal = trim(strval($this->id_subsektor->CurrentValue));
+			if ($curVal != "")
+				$this->id_subsektor->ViewValue = $this->id_subsektor->lookupCacheOption($curVal);
+			else
+				$this->id_subsektor->ViewValue = $this->id_subsektor->Lookup !== NULL && is_array($this->id_subsektor->Lookup->Options) ? $curVal : NULL;
+			if ($this->id_subsektor->ViewValue !== NULL) { // Load from cache
+				$this->id_subsektor->EditValue = array_values($this->id_subsektor->Lookup->Options);
+			} else { // Lookup from database
+				if ($curVal == "") {
+					$filterWrk = "0=1";
+				} else {
+					$filterWrk = "`id_subsektor`" . SearchString("=", $this->id_subsektor->CurrentValue, DATATYPE_NUMBER, "");
+				}
+				$sqlWrk = $this->id_subsektor->Lookup->getSql(TRUE, $filterWrk, '', $this);
+				$rswrk = Conn()->execute($sqlWrk);
+				$arwrk = $rswrk ? $rswrk->getRows() : [];
+				if ($rswrk)
+					$rswrk->close();
+				$this->id_subsektor->EditValue = $arwrk;
+			}
 
 			// tanggal_izin
 			$this->tanggal_izin->EditAttrs["class"] = "form-control";
@@ -1323,17 +1467,7 @@ class izin_non_oss_add extends izin_non_oss
 			$this->detail_izin->PlaceHolder = RemoveHtml($this->detail_izin->caption());
 
 			// sysdate
-			$this->sysdate->EditAttrs["class"] = "form-control";
-			$this->sysdate->EditCustomAttributes = "";
-			$this->sysdate->EditValue = HtmlEncode(FormatDateTime($this->sysdate->CurrentValue, 8));
-			$this->sysdate->PlaceHolder = RemoveHtml($this->sysdate->caption());
-
 			// id_user
-			$this->id_user->EditAttrs["class"] = "form-control";
-			$this->id_user->EditCustomAttributes = "";
-			$this->id_user->EditValue = HtmlEncode($this->id_user->CurrentValue);
-			$this->id_user->PlaceHolder = RemoveHtml($this->id_user->caption());
-
 			// Add refer script
 			// no_izin
 
@@ -1421,11 +1555,8 @@ class izin_non_oss_add extends izin_non_oss
 				AddMessage($FormError, str_replace("%s", $this->id_jenis_izin->caption(), $this->id_jenis_izin->RequiredErrorMessage));
 			}
 		}
-		if (!CheckInteger($this->id_jenis_izin->FormValue)) {
-			AddMessage($FormError, $this->id_jenis_izin->errorMessage());
-		}
 		if ($this->jenis_pemohon->Required) {
-			if (!$this->jenis_pemohon->IsDetailKey && $this->jenis_pemohon->FormValue != NULL && $this->jenis_pemohon->FormValue == "") {
+			if ($this->jenis_pemohon->FormValue == "") {
 				AddMessage($FormError, str_replace("%s", $this->jenis_pemohon->caption(), $this->jenis_pemohon->RequiredErrorMessage));
 			}
 		}
@@ -1439,24 +1570,15 @@ class izin_non_oss_add extends izin_non_oss
 				AddMessage($FormError, str_replace("%s", $this->id_jbu->caption(), $this->id_jbu->RequiredErrorMessage));
 			}
 		}
-		if (!CheckInteger($this->id_jbu->FormValue)) {
-			AddMessage($FormError, $this->id_jbu->errorMessage());
-		}
 		if ($this->id_sektor->Required) {
 			if (!$this->id_sektor->IsDetailKey && $this->id_sektor->FormValue != NULL && $this->id_sektor->FormValue == "") {
 				AddMessage($FormError, str_replace("%s", $this->id_sektor->caption(), $this->id_sektor->RequiredErrorMessage));
 			}
 		}
-		if (!CheckInteger($this->id_sektor->FormValue)) {
-			AddMessage($FormError, $this->id_sektor->errorMessage());
-		}
 		if ($this->id_subsektor->Required) {
 			if (!$this->id_subsektor->IsDetailKey && $this->id_subsektor->FormValue != NULL && $this->id_subsektor->FormValue == "") {
 				AddMessage($FormError, str_replace("%s", $this->id_subsektor->caption(), $this->id_subsektor->RequiredErrorMessage));
 			}
-		}
-		if (!CheckInteger($this->id_subsektor->FormValue)) {
-			AddMessage($FormError, $this->id_subsektor->errorMessage());
 		}
 		if ($this->tanggal_izin->Required) {
 			if (!$this->tanggal_izin->IsDetailKey && $this->tanggal_izin->FormValue != NULL && $this->tanggal_izin->FormValue == "") {
@@ -1491,16 +1613,10 @@ class izin_non_oss_add extends izin_non_oss
 				AddMessage($FormError, str_replace("%s", $this->sysdate->caption(), $this->sysdate->RequiredErrorMessage));
 			}
 		}
-		if (!CheckDate($this->sysdate->FormValue)) {
-			AddMessage($FormError, $this->sysdate->errorMessage());
-		}
 		if ($this->id_user->Required) {
 			if (!$this->id_user->IsDetailKey && $this->id_user->FormValue != NULL && $this->id_user->FormValue == "") {
 				AddMessage($FormError, str_replace("%s", $this->id_user->caption(), $this->id_user->RequiredErrorMessage));
 			}
-		}
-		if (!CheckInteger($this->id_user->FormValue)) {
-			AddMessage($FormError, $this->id_user->errorMessage());
 		}
 
 		// Return validate result
@@ -1564,10 +1680,12 @@ class izin_non_oss_add extends izin_non_oss
 		$this->detail_izin->setDbValueDef($rsnew, $this->detail_izin->CurrentValue, "", FALSE);
 
 		// sysdate
-		$this->sysdate->setDbValueDef($rsnew, UnFormatDateTime($this->sysdate->CurrentValue, 0), CurrentDate(), FALSE);
+		$this->sysdate->CurrentValue = CurrentDate();
+		$this->sysdate->setDbValueDef($rsnew, $this->sysdate->CurrentValue, CurrentDate());
 
 		// id_user
-		$this->id_user->setDbValueDef($rsnew, $this->id_user->CurrentValue, 0, FALSE);
+		$this->id_user->CurrentValue = CurrentUserID();
+		$this->id_user->setDbValueDef($rsnew, $this->id_user->CurrentValue, 0);
 
 		// Call Row Inserting event
 		$rs = ($rsold) ? $rsold->fields : NULL;
@@ -1634,6 +1752,16 @@ class izin_non_oss_add extends izin_non_oss
 
 			// Set up lookup SQL and connection
 			switch ($fld->FieldVar) {
+				case "x_id_jenis_izin":
+					break;
+				case "x_jenis_pemohon":
+					break;
+				case "x_id_jbu":
+					break;
+				case "x_id_sektor":
+					break;
+				case "x_id_subsektor":
+					break;
 				default:
 					$lookupFilter = "";
 					break;
@@ -1654,6 +1782,14 @@ class izin_non_oss_add extends izin_non_oss
 
 					// Format the field values
 					switch ($fld->FieldVar) {
+						case "x_id_jenis_izin":
+							break;
+						case "x_id_jbu":
+							break;
+						case "x_id_sektor":
+							break;
+						case "x_id_subsektor":
+							break;
 					}
 					$ar[strval($row[0])] = $row;
 					$rs->moveNext();

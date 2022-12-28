@@ -88,7 +88,7 @@ class user extends DbTable
 		$this->fields['username'] = &$this->username;
 
 		// password
-		$this->password = new DbField('user', 'user', 'x_password', 'password', '`password`', '`password`', 200, 32, -1, FALSE, '`password`', FALSE, FALSE, FALSE, 'FORMATTED TEXT', 'TEXT');
+		$this->password = new DbField('user', 'user', 'x_password', 'password', '`password`', '`password`', 200, 32, -1, FALSE, '`password`', FALSE, FALSE, FALSE, 'FORMATTED TEXT', 'PASSWORD');
 		$this->password->Nullable = FALSE; // NOT NULL field
 		$this->password->Required = TRUE; // Required field
 		$this->password->Sortable = TRUE; // Allow sort
@@ -99,6 +99,7 @@ class user extends DbTable
 		$this->_email->Nullable = FALSE; // NOT NULL field
 		$this->_email->Required = TRUE; // Required field
 		$this->_email->Sortable = TRUE; // Allow sort
+		$this->_email->DefaultErrorMessage = $Language->phrase("IncorrectEmail");
 		$this->fields['email'] = &$this->_email;
 
 		// userlevel
@@ -735,7 +736,7 @@ class user extends DbTable
 		$this->username->ViewCustomAttributes = "";
 
 		// password
-		$this->password->ViewValue = $this->password->CurrentValue;
+		$this->password->ViewValue = $Language->phrase("PasswordMask");
 		$this->password->ViewCustomAttributes = "";
 
 		// email
@@ -816,8 +817,6 @@ class user extends DbTable
 		// password
 		$this->password->EditAttrs["class"] = "form-control";
 		$this->password->EditCustomAttributes = "";
-		if (!$this->password->Raw)
-			$this->password->CurrentValue = HtmlDecode($this->password->CurrentValue);
 		$this->password->EditValue = $this->password->CurrentValue;
 		$this->password->PlaceHolder = RemoveHtml($this->password->caption());
 

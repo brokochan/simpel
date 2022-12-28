@@ -856,238 +856,249 @@
   <project>
     <phrase id="bodytitle" value="SIMPEL" />
     <phrase id="footertext" value="&amp;copy;2023 SIMPEL" />
-    <menu id="1">
-      <phrase id="menutext" value="hak akses" />
+    <menu id="3">
+      <phrase id="menutext" value="Izin OSS" />
     </menu>
     <menu id="2">
-      <phrase id="menutext" value="izin non oss" />
+      <phrase id="menutext" value="Izin Non-OSS" />
     </menu>
-    <menu id="3">
-      <phrase id="menutext" value="izin oss" />
+    <menu id="13">
+      <phrase id="menutext" value="Pengaturan" />
     </menu>
     <menu id="4">
-      <phrase id="menutext" value="jenis badan usaha" />
+      <phrase id="menutext" value="Jenis Badan Usaha" />
     </menu>
     <menu id="5">
-      <phrase id="menutext" value="jenis izin" />
+      <phrase id="menutext" value="Jenis Izin" />
     </menu>
     <menu id="6">
-      <phrase id="menutext" value="kbli" />
+      <phrase id="menutext" value="KBLI" />
     </menu>
     <menu id="7">
-      <phrase id="menutext" value="kecamatan" />
+      <phrase id="menutext" value="Kecamatan" />
     </menu>
     <menu id="8">
-      <phrase id="menutext" value="penanaman modal" />
-    </menu>
-    <menu id="9">
-      <phrase id="menutext" value="sektor" />
+      <phrase id="menutext" value="Penanaman Modal" />
     </menu>
     <menu id="10">
-      <phrase id="menutext" value="skala usaha" />
+      <phrase id="menutext" value="Skala Usaha" />
+    </menu>
+    <menu id="9">
+      <phrase id="menutext" value="Sektor" />
     </menu>
     <menu id="11">
-      <phrase id="menutext" value="subsektor" />
+      <phrase id="menutext" value="Sub Sektor" />
     </menu>
     <menu id="12">
-      <phrase id="menutext" value="user" />
+      <phrase id="menutext" value="User" />
+    </menu>
+    <menu id="1">
+      <phrase id="menutext" value="Hak Akses" />
     </menu>
     <table id="hak_akses">
-      <phrase id="tblcaption" value="hak akses" />
+      <phrase id="tblcaption" value="Hak Akses" />
       <field id="id_hak_akses">
-        <phrase id="fldcaption" value="id hak akses" />
+        <phrase id="fldcaption" value="ID" />
       </field>
       <field id="hak_akses">
         <phrase id="fldcaption" value="hak akses" />
       </field>
     </table>
     <table id="izin_non_oss">
-      <phrase id="tblcaption" value="izin non oss" />
+      <phrase id="tblcaption" value="Izin Non-OSS" />
       <field id="id_izin_non_oss">
-        <phrase id="fldcaption" value="id izin non oss" />
+        <phrase id="fldcaption" value="ID" />
       </field>
       <field id="no_izin">
-        <phrase id="fldcaption" value="no izin" />
+        <phrase id="fldcaption" value="Nomor Izin" />
       </field>
       <field id="id_jenis_izin">
-        <phrase id="fldcaption" value="id jenis izin" />
+        <phrase id="fldcaption" value="Jenis Izin" />
       </field>
       <field id="jenis_pemohon">
-        <phrase id="fldcaption" value="jenis pemohon" />
+        <phrase id="fldcaption" value="Jenis Pemohon" />
+        <phrase id="fldtagvalue1" value="1" />
+        <phrase id="fldtagcaption1" value="Orang Perseorangan" />
+        <phrase id="fldtagvalue2" value="2" />
+        <phrase id="fldtagcaption2" value="Badan Usaha" />
       </field>
       <field id="nama_pemohon">
-        <phrase id="fldcaption" value="nama pemohon" />
+        <phrase id="fldcaption" value="Nama Lengkap" />
       </field>
       <field id="id_jbu">
-        <phrase id="fldcaption" value="id jbu" />
+        <phrase id="fldcaption" value="Jenis Badan Usaha" />
       </field>
       <field id="id_sektor">
-        <phrase id="fldcaption" value="id sektor" />
+        <phrase id="fldcaption" value="Sektor" />
       </field>
       <field id="id_subsektor">
-        <phrase id="fldcaption" value="id subsektor" />
+        <phrase id="fldcaption" value="Sub Sektor" />
       </field>
       <field id="tanggal_izin">
-        <phrase id="fldcaption" value="tanggal izin" />
+        <phrase id="fldcaption" value="Tanggal Izin" />
       </field>
       <field id="alamat_pemohon">
-        <phrase id="fldcaption" value="alamat pemohon" />
+        <phrase id="fldcaption" value="Alamat Pemohon" />
       </field>
       <field id="alamat_perusahaan">
-        <phrase id="fldcaption" value="alamat perusahaan" />
+        <phrase id="fldcaption" value="Alamat Perusahaan" />
       </field>
       <field id="alamat_proyek">
-        <phrase id="fldcaption" value="alamat proyek" />
+        <phrase id="fldcaption" value="Alamat Proyek" />
       </field>
       <field id="detail_izin">
-        <phrase id="fldcaption" value="detail izin" />
+        <phrase id="fldcaption" value="Detail Izin" />
       </field>
       <field id="sysdate">
-        <phrase id="fldcaption" value="sysdate" />
+        <phrase id="fldcaption" value="Tanggal Input" />
       </field>
       <field id="id_user">
-        <phrase id="fldcaption" value="id user" />
+        <phrase id="fldcaption" value="Operator" />
       </field>
     </table>
     <table id="izin_oss">
-      <phrase id="tblcaption" value="izin oss" />
+      <phrase id="tblcaption" value="Izin OSS" />
       <field id="id_izin_oss">
-        <phrase id="fldcaption" value="id izin oss" />
+        <phrase id="fldcaption" value="ID" />
       </field>
       <field id="nib">
         <phrase id="fldcaption" value="NIB" />
       </field>
       <field id="jenis_pelaku_usaha">
-        <phrase id="fldcaption" value="jenis pelaku usaha" />
+        <phrase id="fldcaption" value="Jenis Pelaku Usaha" />
+        <phrase id="fldtagvalue1" value="1" />
+        <phrase id="fldtagcaption1" value="Orang Perseorangan" />
+        <phrase id="fldtagvalue2" value="2" />
+        <phrase id="fldtagcaption2" value="Badan Usaha" />
       </field>
       <field id="nama_pelaku_usaha">
-        <phrase id="fldcaption" value="nama pelaku usaha" />
+        <phrase id="fldcaption" value="Nama Lengkap" />
       </field>
       <field id="id_jbu">
-        <phrase id="fldcaption" value="id jbu" />
+        <phrase id="fldcaption" value="Jenis Badan Usaha" />
       </field>
       <field id="id_pm">
-        <phrase id="fldcaption" value="id pm" />
+        <phrase id="fldcaption" value="Penanaman Modal" />
       </field>
       <field id="id_kecamatan">
-        <phrase id="fldcaption" value="id kecamatan" />
+        <phrase id="fldcaption" value="Kecamatan" />
       </field>
       <field id="kode_kbli">
-        <phrase id="fldcaption" value="kode kbli" />
+        <phrase id="fldcaption" value="Kode KBLI" />
       </field>
       <field id="id_skala_usaha">
-        <phrase id="fldcaption" value="id skala usaha" />
+        <phrase id="fldcaption" value="Skala Usaha" />
       </field>
       <field id="sysdate">
-        <phrase id="fldcaption" value="sysdate" />
+        <phrase id="fldcaption" value="Tanggal Input" />
       </field>
       <field id="id_user">
-        <phrase id="fldcaption" value="id user" />
+        <phrase id="fldcaption" value="Operator" />
       </field>
     </table>
     <table id="jenis_badan_usaha">
-      <phrase id="tblcaption" value="jenis badan usaha" />
+      <phrase id="tblcaption" value="Jenis Badan Usaha" />
       <field id="id_jbu">
-        <phrase id="fldcaption" value="id jbu" />
+        <phrase id="fldcaption" value="ID" />
       </field>
       <field id="jenis_perusahaan">
-        <phrase id="fldcaption" value="jenis perusahaan" />
+        <phrase id="fldcaption" value="Jenis Perusahaan" />
       </field>
     </table>
     <table id="jenis_izin">
-      <phrase id="tblcaption" value="jenis izin" />
+      <phrase id="tblcaption" value="Jenis Izin" />
       <field id="id_jenis_izin">
-        <phrase id="fldcaption" value="id jenis izin" />
+        <phrase id="fldcaption" value="ID" />
       </field>
       <field id="jenis_izin">
-        <phrase id="fldcaption" value="jenis izin" />
+        <phrase id="fldcaption" value="Jenis Izin" />
       </field>
     </table>
     <table id="kbli">
-      <phrase id="tblcaption" value="kbli" />
+      <phrase id="tblcaption" value="KBLI" />
       <field id="kode_kbli">
-        <phrase id="fldcaption" value="kode kbli" />
+        <phrase id="fldcaption" value="Kode KBLI" />
       </field>
       <field id="judul_kbli">
-        <phrase id="fldcaption" value="judul kbli" />
+        <phrase id="fldcaption" value="Judul KBLI" />
       </field>
       <field id="uraian">
-        <phrase id="fldcaption" value="uraian" />
+        <phrase id="fldcaption" value="Uraian" />
       </field>
       <field id="tahun_kbli">
-        <phrase id="fldcaption" value="tahun kbli" />
+        <phrase id="fldcaption" value="Tahun" />
       </field>
     </table>
     <table id="kecamatan">
-      <phrase id="tblcaption" value="kecamatan" />
+      <phrase id="tblcaption" value="Kecamatan" />
       <field id="id_kecamatan">
-        <phrase id="fldcaption" value="id kecamatan" />
+        <phrase id="fldcaption" value="ID" />
       </field>
       <field id="kecamatan">
-        <phrase id="fldcaption" value="kecamatan" />
+        <phrase id="fldcaption" value="Kecamatan" />
       </field>
       <field id="kodepos">
-        <phrase id="fldcaption" value="kodepos" />
+        <phrase id="fldcaption" value="Tahun" />
       </field>
     </table>
     <table id="penanaman_modal">
-      <phrase id="tblcaption" value="penanaman modal" />
+      <phrase id="tblcaption" value="Penanaman Modal" />
       <field id="id_pm">
-        <phrase id="fldcaption" value="id pm" />
+        <phrase id="fldcaption" value="ID" />
       </field>
       <field id="penanaman_modal">
-        <phrase id="fldcaption" value="penanaman modal" />
+        <phrase id="fldcaption" value="Kode POS" />
       </field>
     </table>
     <table id="sektor">
-      <phrase id="tblcaption" value="sektor" />
+      <phrase id="tblcaption" value="Sektor" />
       <field id="id_sektor">
-        <phrase id="fldcaption" value="id sektor" />
+        <phrase id="fldcaption" value="ID" />
       </field>
       <field id="sektor">
-        <phrase id="fldcaption" value="sektor" />
+        <phrase id="fldcaption" value="Sektor" />
       </field>
     </table>
     <table id="skala_usaha">
-      <phrase id="tblcaption" value="skala usaha" />
+      <phrase id="tblcaption" value="Skala Usaha" />
       <field id="id_skala_usaha">
-        <phrase id="fldcaption" value="id skala usaha" />
+        <phrase id="fldcaption" value="ID" />
       </field>
       <field id="skala_usaha">
-        <phrase id="fldcaption" value="skala usaha" />
+        <phrase id="fldcaption" value="Skala Usaha" />
       </field>
     </table>
     <table id="subsektor">
-      <phrase id="tblcaption" value="subsektor" />
+      <phrase id="tblcaption" value="Sub Sektor" />
       <field id="id_subsektor">
-        <phrase id="fldcaption" value="id subsektor" />
+        <phrase id="fldcaption" value="ID" />
       </field>
       <field id="subsektor">
-        <phrase id="fldcaption" value="subsektor" />
+        <phrase id="fldcaption" value="Subsektor" />
       </field>
       <field id="id_sektor">
         <phrase id="fldcaption" value="id sektor" />
       </field>
     </table>
     <table id="user">
-      <phrase id="tblcaption" value="user" />
+      <phrase id="tblcaption" value="User" />
       <field id="id_user">
-        <phrase id="fldcaption" value="id user" />
+        <phrase id="fldcaption" value="ID" />
       </field>
       <field id="nama_lengkap">
-        <phrase id="fldcaption" value="nama lengkap" />
+        <phrase id="fldcaption" value="Nama Lengkap" />
       </field>
       <field id="username">
-        <phrase id="fldcaption" value="username" />
+        <phrase id="fldcaption" value="Username" />
       </field>
       <field id="password">
-        <phrase id="fldcaption" value="password" />
+        <phrase id="fldcaption" value="Password" />
       </field>
       <field id="_email">
-        <phrase id="fldcaption" value="email" />
+        <phrase id="fldcaption" value="Email" />
       </field>
       <field id="_userlevel">
-        <phrase id="fldcaption" value="userlevel" />
+        <phrase id="fldcaption" value="Userlevel" />
       </field>
     </table>
   </project>

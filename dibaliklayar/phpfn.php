@@ -2083,7 +2083,7 @@ class Breadcrumb
 	public function __construct()
 	{
 		global $Language;
-		$this->Links[] = ["home", "HomePage", "index.php", "ew-home", "", FALSE]; // Home
+		$this->Links[] = ["home", "HomePage", "izin_osslist.php", "ew-home", "", FALSE]; // Home
 	}
 
 	// Check if an item exists

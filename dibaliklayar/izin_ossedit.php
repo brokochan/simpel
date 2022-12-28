@@ -80,57 +80,36 @@ loadjs.ready("head", function() {
 				if (elm && !ew.isHidden(elm) && !ew.hasValue(elm))
 					return this.onError(elm, "<?php echo JsEncode(str_replace("%s", $izin_oss_edit->id_jbu->caption(), $izin_oss_edit->id_jbu->RequiredErrorMessage)) ?>");
 			<?php } ?>
-				elm = this.getElements("x" + infix + "_id_jbu");
-				if (elm && !ew.checkInteger(elm.value))
-					return this.onError(elm, "<?php echo JsEncode($izin_oss_edit->id_jbu->errorMessage()) ?>");
 			<?php if ($izin_oss_edit->id_pm->Required) { ?>
 				elm = this.getElements("x" + infix + "_id_pm");
 				if (elm && !ew.isHidden(elm) && !ew.hasValue(elm))
 					return this.onError(elm, "<?php echo JsEncode(str_replace("%s", $izin_oss_edit->id_pm->caption(), $izin_oss_edit->id_pm->RequiredErrorMessage)) ?>");
 			<?php } ?>
-				elm = this.getElements("x" + infix + "_id_pm");
-				if (elm && !ew.checkInteger(elm.value))
-					return this.onError(elm, "<?php echo JsEncode($izin_oss_edit->id_pm->errorMessage()) ?>");
 			<?php if ($izin_oss_edit->id_kecamatan->Required) { ?>
 				elm = this.getElements("x" + infix + "_id_kecamatan");
 				if (elm && !ew.isHidden(elm) && !ew.hasValue(elm))
 					return this.onError(elm, "<?php echo JsEncode(str_replace("%s", $izin_oss_edit->id_kecamatan->caption(), $izin_oss_edit->id_kecamatan->RequiredErrorMessage)) ?>");
 			<?php } ?>
-				elm = this.getElements("x" + infix + "_id_kecamatan");
-				if (elm && !ew.checkInteger(elm.value))
-					return this.onError(elm, "<?php echo JsEncode($izin_oss_edit->id_kecamatan->errorMessage()) ?>");
 			<?php if ($izin_oss_edit->kode_kbli->Required) { ?>
 				elm = this.getElements("x" + infix + "_kode_kbli");
 				if (elm && !ew.isHidden(elm) && !ew.hasValue(elm))
 					return this.onError(elm, "<?php echo JsEncode(str_replace("%s", $izin_oss_edit->kode_kbli->caption(), $izin_oss_edit->kode_kbli->RequiredErrorMessage)) ?>");
 			<?php } ?>
-				elm = this.getElements("x" + infix + "_kode_kbli");
-				if (elm && !ew.checkInteger(elm.value))
-					return this.onError(elm, "<?php echo JsEncode($izin_oss_edit->kode_kbli->errorMessage()) ?>");
 			<?php if ($izin_oss_edit->id_skala_usaha->Required) { ?>
 				elm = this.getElements("x" + infix + "_id_skala_usaha");
 				if (elm && !ew.isHidden(elm) && !ew.hasValue(elm))
 					return this.onError(elm, "<?php echo JsEncode(str_replace("%s", $izin_oss_edit->id_skala_usaha->caption(), $izin_oss_edit->id_skala_usaha->RequiredErrorMessage)) ?>");
 			<?php } ?>
-				elm = this.getElements("x" + infix + "_id_skala_usaha");
-				if (elm && !ew.checkInteger(elm.value))
-					return this.onError(elm, "<?php echo JsEncode($izin_oss_edit->id_skala_usaha->errorMessage()) ?>");
 			<?php if ($izin_oss_edit->sysdate->Required) { ?>
 				elm = this.getElements("x" + infix + "_sysdate");
 				if (elm && !ew.isHidden(elm) && !ew.hasValue(elm))
 					return this.onError(elm, "<?php echo JsEncode(str_replace("%s", $izin_oss_edit->sysdate->caption(), $izin_oss_edit->sysdate->RequiredErrorMessage)) ?>");
 			<?php } ?>
-				elm = this.getElements("x" + infix + "_sysdate");
-				if (elm && !ew.checkDateDef(elm.value))
-					return this.onError(elm, "<?php echo JsEncode($izin_oss_edit->sysdate->errorMessage()) ?>");
 			<?php if ($izin_oss_edit->id_user->Required) { ?>
 				elm = this.getElements("x" + infix + "_id_user");
 				if (elm && !ew.isHidden(elm) && !ew.hasValue(elm))
 					return this.onError(elm, "<?php echo JsEncode(str_replace("%s", $izin_oss_edit->id_user->caption(), $izin_oss_edit->id_user->RequiredErrorMessage)) ?>");
 			<?php } ?>
-				elm = this.getElements("x" + infix + "_id_user");
-				if (elm && !ew.checkInteger(elm.value))
-					return this.onError(elm, "<?php echo JsEncode($izin_oss_edit->id_user->errorMessage()) ?>");
 
 				// Call Form_CustomValidate event
 				if (!this.Form_CustomValidate(fobj))
@@ -159,6 +138,18 @@ loadjs.ready("head", function() {
 	fizin_ossedit.validateRequired = <?php echo Config("CLIENT_VALIDATE") ? "true" : "false" ?>;
 
 	// Dynamic selection lists
+	fizin_ossedit.lists["x_jenis_pelaku_usaha"] = <?php echo $izin_oss_edit->jenis_pelaku_usaha->Lookup->toClientList($izin_oss_edit) ?>;
+	fizin_ossedit.lists["x_jenis_pelaku_usaha"].options = <?php echo JsonEncode($izin_oss_edit->jenis_pelaku_usaha->options(FALSE, TRUE)) ?>;
+	fizin_ossedit.lists["x_id_jbu"] = <?php echo $izin_oss_edit->id_jbu->Lookup->toClientList($izin_oss_edit) ?>;
+	fizin_ossedit.lists["x_id_jbu"].options = <?php echo JsonEncode($izin_oss_edit->id_jbu->lookupOptions()) ?>;
+	fizin_ossedit.lists["x_id_pm"] = <?php echo $izin_oss_edit->id_pm->Lookup->toClientList($izin_oss_edit) ?>;
+	fizin_ossedit.lists["x_id_pm"].options = <?php echo JsonEncode($izin_oss_edit->id_pm->lookupOptions()) ?>;
+	fizin_ossedit.lists["x_id_kecamatan"] = <?php echo $izin_oss_edit->id_kecamatan->Lookup->toClientList($izin_oss_edit) ?>;
+	fizin_ossedit.lists["x_id_kecamatan"].options = <?php echo JsonEncode($izin_oss_edit->id_kecamatan->lookupOptions()) ?>;
+	fizin_ossedit.lists["x_kode_kbli"] = <?php echo $izin_oss_edit->kode_kbli->Lookup->toClientList($izin_oss_edit) ?>;
+	fizin_ossedit.lists["x_kode_kbli"].options = <?php echo JsonEncode($izin_oss_edit->kode_kbli->lookupOptions()) ?>;
+	fizin_ossedit.lists["x_id_skala_usaha"] = <?php echo $izin_oss_edit->id_skala_usaha->Lookup->toClientList($izin_oss_edit) ?>;
+	fizin_ossedit.lists["x_id_skala_usaha"].options = <?php echo JsonEncode($izin_oss_edit->id_skala_usaha->lookupOptions()) ?>;
 	loadjs.done("fizin_ossedit");
 });
 </script>
@@ -205,10 +196,13 @@ $izin_oss_edit->showMessage();
 <?php } ?>
 <?php if ($izin_oss_edit->jenis_pelaku_usaha->Visible) { // jenis_pelaku_usaha ?>
 	<div id="r_jenis_pelaku_usaha" class="form-group row">
-		<label id="elh_izin_oss_jenis_pelaku_usaha" for="x_jenis_pelaku_usaha" class="<?php echo $izin_oss_edit->LeftColumnClass ?>"><?php echo $izin_oss_edit->jenis_pelaku_usaha->caption() ?><?php echo $izin_oss_edit->jenis_pelaku_usaha->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
+		<label id="elh_izin_oss_jenis_pelaku_usaha" class="<?php echo $izin_oss_edit->LeftColumnClass ?>"><?php echo $izin_oss_edit->jenis_pelaku_usaha->caption() ?><?php echo $izin_oss_edit->jenis_pelaku_usaha->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
 		<div class="<?php echo $izin_oss_edit->RightColumnClass ?>"><div <?php echo $izin_oss_edit->jenis_pelaku_usaha->cellAttributes() ?>>
 <span id="el_izin_oss_jenis_pelaku_usaha">
-<input type="text" data-table="izin_oss" data-field="x_jenis_pelaku_usaha" name="x_jenis_pelaku_usaha" id="x_jenis_pelaku_usaha" size="30" maxlength="32" placeholder="<?php echo HtmlEncode($izin_oss_edit->jenis_pelaku_usaha->getPlaceHolder()) ?>" value="<?php echo $izin_oss_edit->jenis_pelaku_usaha->EditValue ?>"<?php echo $izin_oss_edit->jenis_pelaku_usaha->editAttributes() ?>>
+<div id="tp_x_jenis_pelaku_usaha" class="ew-template"><input type="radio" class="custom-control-input" data-table="izin_oss" data-field="x_jenis_pelaku_usaha" data-value-separator="<?php echo $izin_oss_edit->jenis_pelaku_usaha->displayValueSeparatorAttribute() ?>" name="x_jenis_pelaku_usaha" id="x_jenis_pelaku_usaha" value="{value}"<?php echo $izin_oss_edit->jenis_pelaku_usaha->editAttributes() ?>></div>
+<div id="dsl_x_jenis_pelaku_usaha" data-repeatcolumn="5" class="ew-item-list d-none"><div>
+<?php echo $izin_oss_edit->jenis_pelaku_usaha->radioButtonListHtml(FALSE, "x_jenis_pelaku_usaha") ?>
+</div></div>
 </span>
 <?php echo $izin_oss_edit->jenis_pelaku_usaha->CustomMsg ?></div></div>
 	</div>
@@ -228,7 +222,12 @@ $izin_oss_edit->showMessage();
 		<label id="elh_izin_oss_id_jbu" for="x_id_jbu" class="<?php echo $izin_oss_edit->LeftColumnClass ?>"><?php echo $izin_oss_edit->id_jbu->caption() ?><?php echo $izin_oss_edit->id_jbu->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
 		<div class="<?php echo $izin_oss_edit->RightColumnClass ?>"><div <?php echo $izin_oss_edit->id_jbu->cellAttributes() ?>>
 <span id="el_izin_oss_id_jbu">
-<input type="text" data-table="izin_oss" data-field="x_id_jbu" name="x_id_jbu" id="x_id_jbu" size="30" maxlength="11" placeholder="<?php echo HtmlEncode($izin_oss_edit->id_jbu->getPlaceHolder()) ?>" value="<?php echo $izin_oss_edit->id_jbu->EditValue ?>"<?php echo $izin_oss_edit->id_jbu->editAttributes() ?>>
+<div class="input-group">
+	<select class="custom-select ew-custom-select" data-table="izin_oss" data-field="x_id_jbu" data-value-separator="<?php echo $izin_oss_edit->id_jbu->displayValueSeparatorAttribute() ?>" id="x_id_jbu" name="x_id_jbu"<?php echo $izin_oss_edit->id_jbu->editAttributes() ?>>
+			<?php echo $izin_oss_edit->id_jbu->selectOptionListHtml("x_id_jbu") ?>
+		</select>
+</div>
+<?php echo $izin_oss_edit->id_jbu->Lookup->getParamTag($izin_oss_edit, "p_x_id_jbu") ?>
 </span>
 <?php echo $izin_oss_edit->id_jbu->CustomMsg ?></div></div>
 	</div>
@@ -238,7 +237,12 @@ $izin_oss_edit->showMessage();
 		<label id="elh_izin_oss_id_pm" for="x_id_pm" class="<?php echo $izin_oss_edit->LeftColumnClass ?>"><?php echo $izin_oss_edit->id_pm->caption() ?><?php echo $izin_oss_edit->id_pm->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
 		<div class="<?php echo $izin_oss_edit->RightColumnClass ?>"><div <?php echo $izin_oss_edit->id_pm->cellAttributes() ?>>
 <span id="el_izin_oss_id_pm">
-<input type="text" data-table="izin_oss" data-field="x_id_pm" name="x_id_pm" id="x_id_pm" size="30" maxlength="11" placeholder="<?php echo HtmlEncode($izin_oss_edit->id_pm->getPlaceHolder()) ?>" value="<?php echo $izin_oss_edit->id_pm->EditValue ?>"<?php echo $izin_oss_edit->id_pm->editAttributes() ?>>
+<div class="input-group">
+	<select class="custom-select ew-custom-select" data-table="izin_oss" data-field="x_id_pm" data-value-separator="<?php echo $izin_oss_edit->id_pm->displayValueSeparatorAttribute() ?>" id="x_id_pm" name="x_id_pm"<?php echo $izin_oss_edit->id_pm->editAttributes() ?>>
+			<?php echo $izin_oss_edit->id_pm->selectOptionListHtml("x_id_pm") ?>
+		</select>
+</div>
+<?php echo $izin_oss_edit->id_pm->Lookup->getParamTag($izin_oss_edit, "p_x_id_pm") ?>
 </span>
 <?php echo $izin_oss_edit->id_pm->CustomMsg ?></div></div>
 	</div>
@@ -248,7 +252,12 @@ $izin_oss_edit->showMessage();
 		<label id="elh_izin_oss_id_kecamatan" for="x_id_kecamatan" class="<?php echo $izin_oss_edit->LeftColumnClass ?>"><?php echo $izin_oss_edit->id_kecamatan->caption() ?><?php echo $izin_oss_edit->id_kecamatan->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
 		<div class="<?php echo $izin_oss_edit->RightColumnClass ?>"><div <?php echo $izin_oss_edit->id_kecamatan->cellAttributes() ?>>
 <span id="el_izin_oss_id_kecamatan">
-<input type="text" data-table="izin_oss" data-field="x_id_kecamatan" name="x_id_kecamatan" id="x_id_kecamatan" size="30" maxlength="11" placeholder="<?php echo HtmlEncode($izin_oss_edit->id_kecamatan->getPlaceHolder()) ?>" value="<?php echo $izin_oss_edit->id_kecamatan->EditValue ?>"<?php echo $izin_oss_edit->id_kecamatan->editAttributes() ?>>
+<div class="input-group">
+	<select class="custom-select ew-custom-select" data-table="izin_oss" data-field="x_id_kecamatan" data-value-separator="<?php echo $izin_oss_edit->id_kecamatan->displayValueSeparatorAttribute() ?>" id="x_id_kecamatan" name="x_id_kecamatan"<?php echo $izin_oss_edit->id_kecamatan->editAttributes() ?>>
+			<?php echo $izin_oss_edit->id_kecamatan->selectOptionListHtml("x_id_kecamatan") ?>
+		</select>
+</div>
+<?php echo $izin_oss_edit->id_kecamatan->Lookup->getParamTag($izin_oss_edit, "p_x_id_kecamatan") ?>
 </span>
 <?php echo $izin_oss_edit->id_kecamatan->CustomMsg ?></div></div>
 	</div>
@@ -258,7 +267,12 @@ $izin_oss_edit->showMessage();
 		<label id="elh_izin_oss_kode_kbli" for="x_kode_kbli" class="<?php echo $izin_oss_edit->LeftColumnClass ?>"><?php echo $izin_oss_edit->kode_kbli->caption() ?><?php echo $izin_oss_edit->kode_kbli->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
 		<div class="<?php echo $izin_oss_edit->RightColumnClass ?>"><div <?php echo $izin_oss_edit->kode_kbli->cellAttributes() ?>>
 <span id="el_izin_oss_kode_kbli">
-<input type="text" data-table="izin_oss" data-field="x_kode_kbli" name="x_kode_kbli" id="x_kode_kbli" size="30" maxlength="11" placeholder="<?php echo HtmlEncode($izin_oss_edit->kode_kbli->getPlaceHolder()) ?>" value="<?php echo $izin_oss_edit->kode_kbli->EditValue ?>"<?php echo $izin_oss_edit->kode_kbli->editAttributes() ?>>
+<div class="input-group">
+	<select class="custom-select ew-custom-select" data-table="izin_oss" data-field="x_kode_kbli" data-value-separator="<?php echo $izin_oss_edit->kode_kbli->displayValueSeparatorAttribute() ?>" id="x_kode_kbli" name="x_kode_kbli"<?php echo $izin_oss_edit->kode_kbli->editAttributes() ?>>
+			<?php echo $izin_oss_edit->kode_kbli->selectOptionListHtml("x_kode_kbli") ?>
+		</select>
+</div>
+<?php echo $izin_oss_edit->kode_kbli->Lookup->getParamTag($izin_oss_edit, "p_x_kode_kbli") ?>
 </span>
 <?php echo $izin_oss_edit->kode_kbli->CustomMsg ?></div></div>
 	</div>
@@ -268,36 +282,14 @@ $izin_oss_edit->showMessage();
 		<label id="elh_izin_oss_id_skala_usaha" for="x_id_skala_usaha" class="<?php echo $izin_oss_edit->LeftColumnClass ?>"><?php echo $izin_oss_edit->id_skala_usaha->caption() ?><?php echo $izin_oss_edit->id_skala_usaha->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
 		<div class="<?php echo $izin_oss_edit->RightColumnClass ?>"><div <?php echo $izin_oss_edit->id_skala_usaha->cellAttributes() ?>>
 <span id="el_izin_oss_id_skala_usaha">
-<input type="text" data-table="izin_oss" data-field="x_id_skala_usaha" name="x_id_skala_usaha" id="x_id_skala_usaha" size="30" maxlength="11" placeholder="<?php echo HtmlEncode($izin_oss_edit->id_skala_usaha->getPlaceHolder()) ?>" value="<?php echo $izin_oss_edit->id_skala_usaha->EditValue ?>"<?php echo $izin_oss_edit->id_skala_usaha->editAttributes() ?>>
+<div class="input-group">
+	<select class="custom-select ew-custom-select" data-table="izin_oss" data-field="x_id_skala_usaha" data-value-separator="<?php echo $izin_oss_edit->id_skala_usaha->displayValueSeparatorAttribute() ?>" id="x_id_skala_usaha" name="x_id_skala_usaha"<?php echo $izin_oss_edit->id_skala_usaha->editAttributes() ?>>
+			<?php echo $izin_oss_edit->id_skala_usaha->selectOptionListHtml("x_id_skala_usaha") ?>
+		</select>
+</div>
+<?php echo $izin_oss_edit->id_skala_usaha->Lookup->getParamTag($izin_oss_edit, "p_x_id_skala_usaha") ?>
 </span>
 <?php echo $izin_oss_edit->id_skala_usaha->CustomMsg ?></div></div>
-	</div>
-<?php } ?>
-<?php if ($izin_oss_edit->sysdate->Visible) { // sysdate ?>
-	<div id="r_sysdate" class="form-group row">
-		<label id="elh_izin_oss_sysdate" for="x_sysdate" class="<?php echo $izin_oss_edit->LeftColumnClass ?>"><?php echo $izin_oss_edit->sysdate->caption() ?><?php echo $izin_oss_edit->sysdate->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
-		<div class="<?php echo $izin_oss_edit->RightColumnClass ?>"><div <?php echo $izin_oss_edit->sysdate->cellAttributes() ?>>
-<span id="el_izin_oss_sysdate">
-<input type="text" data-table="izin_oss" data-field="x_sysdate" name="x_sysdate" id="x_sysdate" maxlength="10" placeholder="<?php echo HtmlEncode($izin_oss_edit->sysdate->getPlaceHolder()) ?>" value="<?php echo $izin_oss_edit->sysdate->EditValue ?>"<?php echo $izin_oss_edit->sysdate->editAttributes() ?>>
-<?php if (!$izin_oss_edit->sysdate->ReadOnly && !$izin_oss_edit->sysdate->Disabled && !isset($izin_oss_edit->sysdate->EditAttrs["readonly"]) && !isset($izin_oss_edit->sysdate->EditAttrs["disabled"])) { ?>
-<script>
-loadjs.ready(["fizin_ossedit", "datetimepicker"], function() {
-	ew.createDateTimePicker("fizin_ossedit", "x_sysdate", {"ignoreReadonly":true,"useCurrent":false,"format":0});
-});
-</script>
-<?php } ?>
-</span>
-<?php echo $izin_oss_edit->sysdate->CustomMsg ?></div></div>
-	</div>
-<?php } ?>
-<?php if ($izin_oss_edit->id_user->Visible) { // id_user ?>
-	<div id="r_id_user" class="form-group row">
-		<label id="elh_izin_oss_id_user" for="x_id_user" class="<?php echo $izin_oss_edit->LeftColumnClass ?>"><?php echo $izin_oss_edit->id_user->caption() ?><?php echo $izin_oss_edit->id_user->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
-		<div class="<?php echo $izin_oss_edit->RightColumnClass ?>"><div <?php echo $izin_oss_edit->id_user->cellAttributes() ?>>
-<span id="el_izin_oss_id_user">
-<input type="text" data-table="izin_oss" data-field="x_id_user" name="x_id_user" id="x_id_user" size="30" maxlength="11" placeholder="<?php echo HtmlEncode($izin_oss_edit->id_user->getPlaceHolder()) ?>" value="<?php echo $izin_oss_edit->id_user->EditValue ?>"<?php echo $izin_oss_edit->id_user->editAttributes() ?>>
-</span>
-<?php echo $izin_oss_edit->id_user->CustomMsg ?></div></div>
 	</div>
 <?php } ?>
 </div><!-- /page* -->

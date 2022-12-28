@@ -280,7 +280,7 @@ class index
 		// If session expired, show session expired message
 		if (Get("expired") == "1")
 			$this->setFailureMessage($Language->phrase("SessionExpired"));
-		$this->terminate("hak_akseslist.php"); // Exit and go to default page
+		$this->terminate("izin_osslist.php"); // Exit and go to default page
 	}
 
 	// Page Load event

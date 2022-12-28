@@ -90,18 +90,23 @@ class izin_non_oss extends DbTable
 		$this->fields['no_izin'] = &$this->no_izin;
 
 		// id_jenis_izin
-		$this->id_jenis_izin = new DbField('izin_non_oss', 'izin_non_oss', 'x_id_jenis_izin', 'id_jenis_izin', '`id_jenis_izin`', '`id_jenis_izin`', 3, 11, -1, FALSE, '`id_jenis_izin`', FALSE, FALSE, FALSE, 'FORMATTED TEXT', 'TEXT');
+		$this->id_jenis_izin = new DbField('izin_non_oss', 'izin_non_oss', 'x_id_jenis_izin', 'id_jenis_izin', '`id_jenis_izin`', '`id_jenis_izin`', 3, 11, -1, FALSE, '`id_jenis_izin`', FALSE, FALSE, FALSE, 'FORMATTED TEXT', 'SELECT');
 		$this->id_jenis_izin->Nullable = FALSE; // NOT NULL field
 		$this->id_jenis_izin->Required = TRUE; // Required field
 		$this->id_jenis_izin->Sortable = TRUE; // Allow sort
+		$this->id_jenis_izin->UsePleaseSelect = TRUE; // Use PleaseSelect by default
+		$this->id_jenis_izin->PleaseSelectText = $Language->phrase("PleaseSelect"); // "PleaseSelect" text
+		$this->id_jenis_izin->Lookup = new Lookup('id_jenis_izin', 'jenis_izin', FALSE, 'id_jenis_izin', ["jenis_izin","","",""], [], [], [], [], [], [], '', '');
 		$this->id_jenis_izin->DefaultErrorMessage = $Language->phrase("IncorrectInteger");
 		$this->fields['id_jenis_izin'] = &$this->id_jenis_izin;
 
 		// jenis_pemohon
-		$this->jenis_pemohon = new DbField('izin_non_oss', 'izin_non_oss', 'x_jenis_pemohon', 'jenis_pemohon', '`jenis_pemohon`', '`jenis_pemohon`', 200, 32, -1, FALSE, '`jenis_pemohon`', FALSE, FALSE, FALSE, 'FORMATTED TEXT', 'TEXT');
+		$this->jenis_pemohon = new DbField('izin_non_oss', 'izin_non_oss', 'x_jenis_pemohon', 'jenis_pemohon', '`jenis_pemohon`', '`jenis_pemohon`', 200, 32, -1, FALSE, '`jenis_pemohon`', FALSE, FALSE, FALSE, 'FORMATTED TEXT', 'RADIO');
 		$this->jenis_pemohon->Nullable = FALSE; // NOT NULL field
 		$this->jenis_pemohon->Required = TRUE; // Required field
 		$this->jenis_pemohon->Sortable = TRUE; // Allow sort
+		$this->jenis_pemohon->Lookup = new Lookup('jenis_pemohon', 'izin_non_oss', FALSE, '', ["","","",""], [], [], [], [], [], [], '', '');
+		$this->jenis_pemohon->OptionCount = 2;
 		$this->fields['jenis_pemohon'] = &$this->jenis_pemohon;
 
 		// nama_pemohon
@@ -112,24 +117,33 @@ class izin_non_oss extends DbTable
 		$this->fields['nama_pemohon'] = &$this->nama_pemohon;
 
 		// id_jbu
-		$this->id_jbu = new DbField('izin_non_oss', 'izin_non_oss', 'x_id_jbu', 'id_jbu', '`id_jbu`', '`id_jbu`', 3, 11, -1, FALSE, '`id_jbu`', FALSE, FALSE, FALSE, 'FORMATTED TEXT', 'TEXT');
+		$this->id_jbu = new DbField('izin_non_oss', 'izin_non_oss', 'x_id_jbu', 'id_jbu', '`id_jbu`', '`id_jbu`', 3, 11, -1, FALSE, '`id_jbu`', FALSE, FALSE, FALSE, 'FORMATTED TEXT', 'SELECT');
 		$this->id_jbu->Sortable = TRUE; // Allow sort
+		$this->id_jbu->UsePleaseSelect = TRUE; // Use PleaseSelect by default
+		$this->id_jbu->PleaseSelectText = $Language->phrase("PleaseSelect"); // "PleaseSelect" text
+		$this->id_jbu->Lookup = new Lookup('id_jbu', 'jenis_badan_usaha', FALSE, 'id_jbu', ["jenis_perusahaan","","",""], [], [], [], [], [], [], '', '');
 		$this->id_jbu->DefaultErrorMessage = $Language->phrase("IncorrectInteger");
 		$this->fields['id_jbu'] = &$this->id_jbu;
 
 		// id_sektor
-		$this->id_sektor = new DbField('izin_non_oss', 'izin_non_oss', 'x_id_sektor', 'id_sektor', '`id_sektor`', '`id_sektor`', 3, 11, -1, FALSE, '`id_sektor`', FALSE, FALSE, FALSE, 'FORMATTED TEXT', 'TEXT');
+		$this->id_sektor = new DbField('izin_non_oss', 'izin_non_oss', 'x_id_sektor', 'id_sektor', '`id_sektor`', '`id_sektor`', 3, 11, -1, FALSE, '`id_sektor`', FALSE, FALSE, FALSE, 'FORMATTED TEXT', 'SELECT');
 		$this->id_sektor->Nullable = FALSE; // NOT NULL field
 		$this->id_sektor->Required = TRUE; // Required field
 		$this->id_sektor->Sortable = TRUE; // Allow sort
+		$this->id_sektor->UsePleaseSelect = TRUE; // Use PleaseSelect by default
+		$this->id_sektor->PleaseSelectText = $Language->phrase("PleaseSelect"); // "PleaseSelect" text
+		$this->id_sektor->Lookup = new Lookup('id_sektor', 'sektor', FALSE, 'id_sektor', ["sektor","","",""], [], ["x_id_subsektor"], [], [], [], [], '', '');
 		$this->id_sektor->DefaultErrorMessage = $Language->phrase("IncorrectInteger");
 		$this->fields['id_sektor'] = &$this->id_sektor;
 
 		// id_subsektor
-		$this->id_subsektor = new DbField('izin_non_oss', 'izin_non_oss', 'x_id_subsektor', 'id_subsektor', '`id_subsektor`', '`id_subsektor`', 3, 11, -1, FALSE, '`id_subsektor`', FALSE, FALSE, FALSE, 'FORMATTED TEXT', 'TEXT');
+		$this->id_subsektor = new DbField('izin_non_oss', 'izin_non_oss', 'x_id_subsektor', 'id_subsektor', '`id_subsektor`', '`id_subsektor`', 3, 11, -1, FALSE, '`id_subsektor`', FALSE, FALSE, FALSE, 'FORMATTED TEXT', 'SELECT');
 		$this->id_subsektor->Nullable = FALSE; // NOT NULL field
 		$this->id_subsektor->Required = TRUE; // Required field
 		$this->id_subsektor->Sortable = TRUE; // Allow sort
+		$this->id_subsektor->UsePleaseSelect = TRUE; // Use PleaseSelect by default
+		$this->id_subsektor->PleaseSelectText = $Language->phrase("PleaseSelect"); // "PleaseSelect" text
+		$this->id_subsektor->Lookup = new Lookup('id_subsektor', 'subsektor', FALSE, 'id_subsektor', ["subsektor","","",""], ["x_id_sektor"], [], ["id_sektor"], ["x_id_sektor"], [], [], '', '');
 		$this->id_subsektor->DefaultErrorMessage = $Language->phrase("IncorrectInteger");
 		$this->fields['id_subsektor'] = &$this->id_subsektor;
 
@@ -172,7 +186,6 @@ class izin_non_oss extends DbTable
 		// sysdate
 		$this->sysdate = new DbField('izin_non_oss', 'izin_non_oss', 'x_sysdate', 'sysdate', '`sysdate`', CastDateFieldForLike("`sysdate`", 0, "DB"), 133, 10, 0, FALSE, '`sysdate`', FALSE, FALSE, FALSE, 'FORMATTED TEXT', 'TEXT');
 		$this->sysdate->Nullable = FALSE; // NOT NULL field
-		$this->sysdate->Required = TRUE; // Required field
 		$this->sysdate->Sortable = TRUE; // Allow sort
 		$this->sysdate->DefaultErrorMessage = str_replace("%s", $GLOBALS["DATE_FORMAT"], $Language->phrase("IncorrectDate"));
 		$this->fields['sysdate'] = &$this->sysdate;
@@ -180,7 +193,6 @@ class izin_non_oss extends DbTable
 		// id_user
 		$this->id_user = new DbField('izin_non_oss', 'izin_non_oss', 'x_id_user', 'id_user', '`id_user`', '`id_user`', 3, 11, -1, FALSE, '`id_user`', FALSE, FALSE, FALSE, 'FORMATTED TEXT', 'TEXT');
 		$this->id_user->Nullable = FALSE; // NOT NULL field
-		$this->id_user->Required = TRUE; // Required field
 		$this->id_user->Sortable = TRUE; // Allow sort
 		$this->id_user->DefaultErrorMessage = $Language->phrase("IncorrectInteger");
 		$this->fields['id_user'] = &$this->id_user;
@@ -835,12 +847,33 @@ class izin_non_oss extends DbTable
 		$this->no_izin->ViewCustomAttributes = "";
 
 		// id_jenis_izin
-		$this->id_jenis_izin->ViewValue = $this->id_jenis_izin->CurrentValue;
-		$this->id_jenis_izin->ViewValue = FormatNumber($this->id_jenis_izin->ViewValue, 0, -2, -2, -2);
+		$curVal = strval($this->id_jenis_izin->CurrentValue);
+		if ($curVal != "") {
+			$this->id_jenis_izin->ViewValue = $this->id_jenis_izin->lookupCacheOption($curVal);
+			if ($this->id_jenis_izin->ViewValue === NULL) { // Lookup from database
+				$filterWrk = "`id_jenis_izin`" . SearchString("=", $curVal, DATATYPE_NUMBER, "");
+				$sqlWrk = $this->id_jenis_izin->Lookup->getSql(FALSE, $filterWrk, '', $this);
+				$rswrk = Conn()->execute($sqlWrk);
+				if ($rswrk && !$rswrk->EOF) { // Lookup values found
+					$arwrk = [];
+					$arwrk[1] = $rswrk->fields('df');
+					$this->id_jenis_izin->ViewValue = $this->id_jenis_izin->displayValue($arwrk);
+					$rswrk->Close();
+				} else {
+					$this->id_jenis_izin->ViewValue = $this->id_jenis_izin->CurrentValue;
+				}
+			}
+		} else {
+			$this->id_jenis_izin->ViewValue = NULL;
+		}
 		$this->id_jenis_izin->ViewCustomAttributes = "";
 
 		// jenis_pemohon
-		$this->jenis_pemohon->ViewValue = $this->jenis_pemohon->CurrentValue;
+		if (strval($this->jenis_pemohon->CurrentValue) != "") {
+			$this->jenis_pemohon->ViewValue = $this->jenis_pemohon->optionCaption($this->jenis_pemohon->CurrentValue);
+		} else {
+			$this->jenis_pemohon->ViewValue = NULL;
+		}
 		$this->jenis_pemohon->ViewCustomAttributes = "";
 
 		// nama_pemohon
@@ -848,18 +881,69 @@ class izin_non_oss extends DbTable
 		$this->nama_pemohon->ViewCustomAttributes = "";
 
 		// id_jbu
-		$this->id_jbu->ViewValue = $this->id_jbu->CurrentValue;
-		$this->id_jbu->ViewValue = FormatNumber($this->id_jbu->ViewValue, 0, -2, -2, -2);
+		$curVal = strval($this->id_jbu->CurrentValue);
+		if ($curVal != "") {
+			$this->id_jbu->ViewValue = $this->id_jbu->lookupCacheOption($curVal);
+			if ($this->id_jbu->ViewValue === NULL) { // Lookup from database
+				$filterWrk = "`id_jbu`" . SearchString("=", $curVal, DATATYPE_NUMBER, "");
+				$sqlWrk = $this->id_jbu->Lookup->getSql(FALSE, $filterWrk, '', $this);
+				$rswrk = Conn()->execute($sqlWrk);
+				if ($rswrk && !$rswrk->EOF) { // Lookup values found
+					$arwrk = [];
+					$arwrk[1] = $rswrk->fields('df');
+					$this->id_jbu->ViewValue = $this->id_jbu->displayValue($arwrk);
+					$rswrk->Close();
+				} else {
+					$this->id_jbu->ViewValue = $this->id_jbu->CurrentValue;
+				}
+			}
+		} else {
+			$this->id_jbu->ViewValue = NULL;
+		}
 		$this->id_jbu->ViewCustomAttributes = "";
 
 		// id_sektor
-		$this->id_sektor->ViewValue = $this->id_sektor->CurrentValue;
-		$this->id_sektor->ViewValue = FormatNumber($this->id_sektor->ViewValue, 0, -2, -2, -2);
+		$curVal = strval($this->id_sektor->CurrentValue);
+		if ($curVal != "") {
+			$this->id_sektor->ViewValue = $this->id_sektor->lookupCacheOption($curVal);
+			if ($this->id_sektor->ViewValue === NULL) { // Lookup from database
+				$filterWrk = "`id_sektor`" . SearchString("=", $curVal, DATATYPE_NUMBER, "");
+				$sqlWrk = $this->id_sektor->Lookup->getSql(FALSE, $filterWrk, '', $this);
+				$rswrk = Conn()->execute($sqlWrk);
+				if ($rswrk && !$rswrk->EOF) { // Lookup values found
+					$arwrk = [];
+					$arwrk[1] = $rswrk->fields('df');
+					$this->id_sektor->ViewValue = $this->id_sektor->displayValue($arwrk);
+					$rswrk->Close();
+				} else {
+					$this->id_sektor->ViewValue = $this->id_sektor->CurrentValue;
+				}
+			}
+		} else {
+			$this->id_sektor->ViewValue = NULL;
+		}
 		$this->id_sektor->ViewCustomAttributes = "";
 
 		// id_subsektor
-		$this->id_subsektor->ViewValue = $this->id_subsektor->CurrentValue;
-		$this->id_subsektor->ViewValue = FormatNumber($this->id_subsektor->ViewValue, 0, -2, -2, -2);
+		$curVal = strval($this->id_subsektor->CurrentValue);
+		if ($curVal != "") {
+			$this->id_subsektor->ViewValue = $this->id_subsektor->lookupCacheOption($curVal);
+			if ($this->id_subsektor->ViewValue === NULL) { // Lookup from database
+				$filterWrk = "`id_subsektor`" . SearchString("=", $curVal, DATATYPE_NUMBER, "");
+				$sqlWrk = $this->id_subsektor->Lookup->getSql(FALSE, $filterWrk, '', $this);
+				$rswrk = Conn()->execute($sqlWrk);
+				if ($rswrk && !$rswrk->EOF) { // Lookup values found
+					$arwrk = [];
+					$arwrk[1] = $rswrk->fields('df');
+					$this->id_subsektor->ViewValue = $this->id_subsektor->displayValue($arwrk);
+					$rswrk->Close();
+				} else {
+					$this->id_subsektor->ViewValue = $this->id_subsektor->CurrentValue;
+				}
+			}
+		} else {
+			$this->id_subsektor->ViewValue = NULL;
+		}
 		$this->id_subsektor->ViewCustomAttributes = "";
 
 		// tanggal_izin
@@ -1000,16 +1084,10 @@ class izin_non_oss extends DbTable
 		// id_jenis_izin
 		$this->id_jenis_izin->EditAttrs["class"] = "form-control";
 		$this->id_jenis_izin->EditCustomAttributes = "";
-		$this->id_jenis_izin->EditValue = $this->id_jenis_izin->CurrentValue;
-		$this->id_jenis_izin->PlaceHolder = RemoveHtml($this->id_jenis_izin->caption());
 
 		// jenis_pemohon
-		$this->jenis_pemohon->EditAttrs["class"] = "form-control";
 		$this->jenis_pemohon->EditCustomAttributes = "";
-		if (!$this->jenis_pemohon->Raw)
-			$this->jenis_pemohon->CurrentValue = HtmlDecode($this->jenis_pemohon->CurrentValue);
-		$this->jenis_pemohon->EditValue = $this->jenis_pemohon->CurrentValue;
-		$this->jenis_pemohon->PlaceHolder = RemoveHtml($this->jenis_pemohon->caption());
+		$this->jenis_pemohon->EditValue = $this->jenis_pemohon->options(FALSE);
 
 		// nama_pemohon
 		$this->nama_pemohon->EditAttrs["class"] = "form-control";
@@ -1022,20 +1100,14 @@ class izin_non_oss extends DbTable
 		// id_jbu
 		$this->id_jbu->EditAttrs["class"] = "form-control";
 		$this->id_jbu->EditCustomAttributes = "";
-		$this->id_jbu->EditValue = $this->id_jbu->CurrentValue;
-		$this->id_jbu->PlaceHolder = RemoveHtml($this->id_jbu->caption());
 
 		// id_sektor
 		$this->id_sektor->EditAttrs["class"] = "form-control";
 		$this->id_sektor->EditCustomAttributes = "";
-		$this->id_sektor->EditValue = $this->id_sektor->CurrentValue;
-		$this->id_sektor->PlaceHolder = RemoveHtml($this->id_sektor->caption());
 
 		// id_subsektor
 		$this->id_subsektor->EditAttrs["class"] = "form-control";
 		$this->id_subsektor->EditCustomAttributes = "";
-		$this->id_subsektor->EditValue = $this->id_subsektor->CurrentValue;
-		$this->id_subsektor->PlaceHolder = RemoveHtml($this->id_subsektor->caption());
 
 		// tanggal_izin
 		$this->tanggal_izin->EditAttrs["class"] = "form-control";
@@ -1068,18 +1140,9 @@ class izin_non_oss extends DbTable
 		$this->detail_izin->PlaceHolder = RemoveHtml($this->detail_izin->caption());
 
 		// sysdate
-		$this->sysdate->EditAttrs["class"] = "form-control";
-		$this->sysdate->EditCustomAttributes = "";
-		$this->sysdate->EditValue = FormatDateTime($this->sysdate->CurrentValue, 8);
-		$this->sysdate->PlaceHolder = RemoveHtml($this->sysdate->caption());
-
 		// id_user
-		$this->id_user->EditAttrs["class"] = "form-control";
-		$this->id_user->EditCustomAttributes = "";
-		$this->id_user->EditValue = $this->id_user->CurrentValue;
-		$this->id_user->PlaceHolder = RemoveHtml($this->id_user->caption());
-
 		// Call Row Rendered event
+
 		$this->Row_Rendered();
 	}
 

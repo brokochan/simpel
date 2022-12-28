@@ -170,7 +170,7 @@ $user_list->ListOptions->render("header", "left");
 		<th data-name="password" class="<?php echo $user_list->password->headerCellClass() ?>"><div id="elh_user_password" class="user_password"><div class="ew-table-header-caption"><?php echo $user_list->password->caption() ?></div></div></th>
 	<?php } else { ?>
 		<th data-name="password" class="<?php echo $user_list->password->headerCellClass() ?>"><div class="ew-pointer" onclick="ew.sort(event, '<?php echo $user_list->SortUrl($user_list->password) ?>', 1);"><div id="elh_user_password" class="user_password">
-			<div class="ew-table-header-btn"><span class="ew-table-header-caption"><?php echo $user_list->password->caption() ?><?php echo $Language->phrase("SrchLegend") ?></span><span class="ew-table-header-sort"><?php if ($user_list->password->getSort() == "ASC") { ?><i class="fas fa-sort-up"></i><?php } elseif ($user_list->password->getSort() == "DESC") { ?><i class="fas fa-sort-down"></i><?php } ?></span></div>
+			<div class="ew-table-header-btn"><span class="ew-table-header-caption"><?php echo $user_list->password->caption() ?></span><span class="ew-table-header-sort"><?php if ($user_list->password->getSort() == "ASC") { ?><i class="fas fa-sort-up"></i><?php } elseif ($user_list->password->getSort() == "DESC") { ?><i class="fas fa-sort-down"></i><?php } ?></span></div>
 		</div></div></th>
 	<?php } ?>
 <?php } ?>

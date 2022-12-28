@@ -1808,7 +1808,7 @@ class user_list extends user
 			$this->username->ViewCustomAttributes = "";
 
 			// password
-			$this->password->ViewValue = $this->password->CurrentValue;
+			$this->password->ViewValue = $Language->phrase("PasswordMask");
 			$this->password->ViewCustomAttributes = "";
 
 			// email

@@ -86,10 +86,12 @@ class izin_oss extends DbTable
 		$this->fields['NIB'] = &$this->NIB;
 
 		// jenis_pelaku_usaha
-		$this->jenis_pelaku_usaha = new DbField('izin_oss', 'izin_oss', 'x_jenis_pelaku_usaha', 'jenis_pelaku_usaha', '`jenis_pelaku_usaha`', '`jenis_pelaku_usaha`', 200, 32, -1, FALSE, '`jenis_pelaku_usaha`', FALSE, FALSE, FALSE, 'FORMATTED TEXT', 'TEXT');
+		$this->jenis_pelaku_usaha = new DbField('izin_oss', 'izin_oss', 'x_jenis_pelaku_usaha', 'jenis_pelaku_usaha', '`jenis_pelaku_usaha`', '`jenis_pelaku_usaha`', 200, 32, -1, FALSE, '`jenis_pelaku_usaha`', FALSE, FALSE, FALSE, 'FORMATTED TEXT', 'RADIO');
 		$this->jenis_pelaku_usaha->Nullable = FALSE; // NOT NULL field
 		$this->jenis_pelaku_usaha->Required = TRUE; // Required field
 		$this->jenis_pelaku_usaha->Sortable = TRUE; // Allow sort
+		$this->jenis_pelaku_usaha->Lookup = new Lookup('jenis_pelaku_usaha', 'izin_oss', FALSE, '', ["","","",""], [], [], [], [], [], [], '', '');
+		$this->jenis_pelaku_usaha->OptionCount = 2;
 		$this->fields['jenis_pelaku_usaha'] = &$this->jenis_pelaku_usaha;
 
 		// nama_pelaku_usaha
@@ -100,47 +102,61 @@ class izin_oss extends DbTable
 		$this->fields['nama_pelaku_usaha'] = &$this->nama_pelaku_usaha;
 
 		// id_jbu
-		$this->id_jbu = new DbField('izin_oss', 'izin_oss', 'x_id_jbu', 'id_jbu', '`id_jbu`', '`id_jbu`', 3, 11, -1, FALSE, '`id_jbu`', FALSE, FALSE, FALSE, 'FORMATTED TEXT', 'TEXT');
+		$this->id_jbu = new DbField('izin_oss', 'izin_oss', 'x_id_jbu', 'id_jbu', '`id_jbu`', '`id_jbu`', 3, 11, -1, FALSE, '`id_jbu`', FALSE, FALSE, FALSE, 'FORMATTED TEXT', 'SELECT');
 		$this->id_jbu->Sortable = TRUE; // Allow sort
+		$this->id_jbu->UsePleaseSelect = TRUE; // Use PleaseSelect by default
+		$this->id_jbu->PleaseSelectText = $Language->phrase("PleaseSelect"); // "PleaseSelect" text
+		$this->id_jbu->Lookup = new Lookup('id_jbu', 'jenis_badan_usaha', FALSE, 'id_jbu', ["jenis_perusahaan","","",""], [], [], [], [], [], [], '', '');
 		$this->id_jbu->DefaultErrorMessage = $Language->phrase("IncorrectInteger");
 		$this->fields['id_jbu'] = &$this->id_jbu;
 
 		// id_pm
-		$this->id_pm = new DbField('izin_oss', 'izin_oss', 'x_id_pm', 'id_pm', '`id_pm`', '`id_pm`', 3, 11, -1, FALSE, '`id_pm`', FALSE, FALSE, FALSE, 'FORMATTED TEXT', 'TEXT');
+		$this->id_pm = new DbField('izin_oss', 'izin_oss', 'x_id_pm', 'id_pm', '`id_pm`', '`id_pm`', 3, 11, -1, FALSE, '`id_pm`', FALSE, FALSE, FALSE, 'FORMATTED TEXT', 'SELECT');
 		$this->id_pm->Nullable = FALSE; // NOT NULL field
 		$this->id_pm->Required = TRUE; // Required field
 		$this->id_pm->Sortable = TRUE; // Allow sort
+		$this->id_pm->UsePleaseSelect = TRUE; // Use PleaseSelect by default
+		$this->id_pm->PleaseSelectText = $Language->phrase("PleaseSelect"); // "PleaseSelect" text
+		$this->id_pm->Lookup = new Lookup('id_pm', 'penanaman_modal', FALSE, 'id_pm', ["penanaman_modal","","",""], [], [], [], [], [], [], '', '');
 		$this->id_pm->DefaultErrorMessage = $Language->phrase("IncorrectInteger");
 		$this->fields['id_pm'] = &$this->id_pm;
 
 		// id_kecamatan
-		$this->id_kecamatan = new DbField('izin_oss', 'izin_oss', 'x_id_kecamatan', 'id_kecamatan', '`id_kecamatan`', '`id_kecamatan`', 3, 11, -1, FALSE, '`id_kecamatan`', FALSE, FALSE, FALSE, 'FORMATTED TEXT', 'TEXT');
+		$this->id_kecamatan = new DbField('izin_oss', 'izin_oss', 'x_id_kecamatan', 'id_kecamatan', '`id_kecamatan`', '`id_kecamatan`', 3, 11, -1, FALSE, '`id_kecamatan`', FALSE, FALSE, FALSE, 'FORMATTED TEXT', 'SELECT');
 		$this->id_kecamatan->Nullable = FALSE; // NOT NULL field
 		$this->id_kecamatan->Required = TRUE; // Required field
 		$this->id_kecamatan->Sortable = TRUE; // Allow sort
+		$this->id_kecamatan->UsePleaseSelect = TRUE; // Use PleaseSelect by default
+		$this->id_kecamatan->PleaseSelectText = $Language->phrase("PleaseSelect"); // "PleaseSelect" text
+		$this->id_kecamatan->Lookup = new Lookup('id_kecamatan', 'kecamatan', FALSE, 'id_kecamatan', ["kecamatan","","",""], [], [], [], [], [], [], '', '');
 		$this->id_kecamatan->DefaultErrorMessage = $Language->phrase("IncorrectInteger");
 		$this->fields['id_kecamatan'] = &$this->id_kecamatan;
 
 		// kode_kbli
-		$this->kode_kbli = new DbField('izin_oss', 'izin_oss', 'x_kode_kbli', 'kode_kbli', '`kode_kbli`', '`kode_kbli`', 3, 11, -1, FALSE, '`kode_kbli`', FALSE, FALSE, FALSE, 'FORMATTED TEXT', 'TEXT');
+		$this->kode_kbli = new DbField('izin_oss', 'izin_oss', 'x_kode_kbli', 'kode_kbli', '`kode_kbli`', '`kode_kbli`', 3, 11, -1, FALSE, '`kode_kbli`', FALSE, FALSE, FALSE, 'FORMATTED TEXT', 'SELECT');
 		$this->kode_kbli->Nullable = FALSE; // NOT NULL field
 		$this->kode_kbli->Required = TRUE; // Required field
 		$this->kode_kbli->Sortable = TRUE; // Allow sort
+		$this->kode_kbli->UsePleaseSelect = TRUE; // Use PleaseSelect by default
+		$this->kode_kbli->PleaseSelectText = $Language->phrase("PleaseSelect"); // "PleaseSelect" text
+		$this->kode_kbli->Lookup = new Lookup('kode_kbli', 'kbli', FALSE, 'kode_kbli', ["kode_kbli","judul_kbli","uraian",""], [], [], [], [], [], [], '', '');
 		$this->kode_kbli->DefaultErrorMessage = $Language->phrase("IncorrectInteger");
 		$this->fields['kode_kbli'] = &$this->kode_kbli;
 
 		// id_skala_usaha
-		$this->id_skala_usaha = new DbField('izin_oss', 'izin_oss', 'x_id_skala_usaha', 'id_skala_usaha', '`id_skala_usaha`', '`id_skala_usaha`', 3, 11, -1, FALSE, '`id_skala_usaha`', FALSE, FALSE, FALSE, 'FORMATTED TEXT', 'TEXT');
+		$this->id_skala_usaha = new DbField('izin_oss', 'izin_oss', 'x_id_skala_usaha', 'id_skala_usaha', '`id_skala_usaha`', '`id_skala_usaha`', 3, 11, -1, FALSE, '`id_skala_usaha`', FALSE, FALSE, FALSE, 'FORMATTED TEXT', 'SELECT');
 		$this->id_skala_usaha->Nullable = FALSE; // NOT NULL field
 		$this->id_skala_usaha->Required = TRUE; // Required field
 		$this->id_skala_usaha->Sortable = TRUE; // Allow sort
+		$this->id_skala_usaha->UsePleaseSelect = TRUE; // Use PleaseSelect by default
+		$this->id_skala_usaha->PleaseSelectText = $Language->phrase("PleaseSelect"); // "PleaseSelect" text
+		$this->id_skala_usaha->Lookup = new Lookup('id_skala_usaha', 'skala_usaha', FALSE, 'id_skala_usaha', ["skala_usaha","","",""], [], [], [], [], [], [], '', '');
 		$this->id_skala_usaha->DefaultErrorMessage = $Language->phrase("IncorrectInteger");
 		$this->fields['id_skala_usaha'] = &$this->id_skala_usaha;
 
 		// sysdate
 		$this->sysdate = new DbField('izin_oss', 'izin_oss', 'x_sysdate', 'sysdate', '`sysdate`', CastDateFieldForLike("`sysdate`", 0, "DB"), 133, 10, 0, FALSE, '`sysdate`', FALSE, FALSE, FALSE, 'FORMATTED TEXT', 'TEXT');
 		$this->sysdate->Nullable = FALSE; // NOT NULL field
-		$this->sysdate->Required = TRUE; // Required field
 		$this->sysdate->Sortable = TRUE; // Allow sort
 		$this->sysdate->DefaultErrorMessage = str_replace("%s", $GLOBALS["DATE_FORMAT"], $Language->phrase("IncorrectDate"));
 		$this->fields['sysdate'] = &$this->sysdate;
@@ -148,7 +164,6 @@ class izin_oss extends DbTable
 		// id_user
 		$this->id_user = new DbField('izin_oss', 'izin_oss', 'x_id_user', 'id_user', '`id_user`', '`id_user`', 3, 11, -1, FALSE, '`id_user`', FALSE, FALSE, FALSE, 'FORMATTED TEXT', 'TEXT');
 		$this->id_user->Nullable = FALSE; // NOT NULL field
-		$this->id_user->Required = TRUE; // Required field
 		$this->id_user->Sortable = TRUE; // Allow sort
 		$this->id_user->DefaultErrorMessage = $Language->phrase("IncorrectInteger");
 		$this->fields['id_user'] = &$this->id_user;
@@ -791,7 +806,11 @@ class izin_oss extends DbTable
 		$this->NIB->ViewCustomAttributes = "";
 
 		// jenis_pelaku_usaha
-		$this->jenis_pelaku_usaha->ViewValue = $this->jenis_pelaku_usaha->CurrentValue;
+		if (strval($this->jenis_pelaku_usaha->CurrentValue) != "") {
+			$this->jenis_pelaku_usaha->ViewValue = $this->jenis_pelaku_usaha->optionCaption($this->jenis_pelaku_usaha->CurrentValue);
+		} else {
+			$this->jenis_pelaku_usaha->ViewValue = NULL;
+		}
 		$this->jenis_pelaku_usaha->ViewCustomAttributes = "";
 
 		// nama_pelaku_usaha
@@ -799,28 +818,115 @@ class izin_oss extends DbTable
 		$this->nama_pelaku_usaha->ViewCustomAttributes = "";
 
 		// id_jbu
-		$this->id_jbu->ViewValue = $this->id_jbu->CurrentValue;
-		$this->id_jbu->ViewValue = FormatNumber($this->id_jbu->ViewValue, 0, -2, -2, -2);
+		$curVal = strval($this->id_jbu->CurrentValue);
+		if ($curVal != "") {
+			$this->id_jbu->ViewValue = $this->id_jbu->lookupCacheOption($curVal);
+			if ($this->id_jbu->ViewValue === NULL) { // Lookup from database
+				$filterWrk = "`id_jbu`" . SearchString("=", $curVal, DATATYPE_NUMBER, "");
+				$sqlWrk = $this->id_jbu->Lookup->getSql(FALSE, $filterWrk, '', $this);
+				$rswrk = Conn()->execute($sqlWrk);
+				if ($rswrk && !$rswrk->EOF) { // Lookup values found
+					$arwrk = [];
+					$arwrk[1] = $rswrk->fields('df');
+					$this->id_jbu->ViewValue = $this->id_jbu->displayValue($arwrk);
+					$rswrk->Close();
+				} else {
+					$this->id_jbu->ViewValue = $this->id_jbu->CurrentValue;
+				}
+			}
+		} else {
+			$this->id_jbu->ViewValue = NULL;
+		}
 		$this->id_jbu->ViewCustomAttributes = "";
 
 		// id_pm
-		$this->id_pm->ViewValue = $this->id_pm->CurrentValue;
-		$this->id_pm->ViewValue = FormatNumber($this->id_pm->ViewValue, 0, -2, -2, -2);
+		$curVal = strval($this->id_pm->CurrentValue);
+		if ($curVal != "") {
+			$this->id_pm->ViewValue = $this->id_pm->lookupCacheOption($curVal);
+			if ($this->id_pm->ViewValue === NULL) { // Lookup from database
+				$filterWrk = "`id_pm`" . SearchString("=", $curVal, DATATYPE_NUMBER, "");
+				$sqlWrk = $this->id_pm->Lookup->getSql(FALSE, $filterWrk, '', $this);
+				$rswrk = Conn()->execute($sqlWrk);
+				if ($rswrk && !$rswrk->EOF) { // Lookup values found
+					$arwrk = [];
+					$arwrk[1] = $rswrk->fields('df');
+					$this->id_pm->ViewValue = $this->id_pm->displayValue($arwrk);
+					$rswrk->Close();
+				} else {
+					$this->id_pm->ViewValue = $this->id_pm->CurrentValue;
+				}
+			}
+		} else {
+			$this->id_pm->ViewValue = NULL;
+		}
 		$this->id_pm->ViewCustomAttributes = "";
 
 		// id_kecamatan
-		$this->id_kecamatan->ViewValue = $this->id_kecamatan->CurrentValue;
-		$this->id_kecamatan->ViewValue = FormatNumber($this->id_kecamatan->ViewValue, 0, -2, -2, -2);
+		$curVal = strval($this->id_kecamatan->CurrentValue);
+		if ($curVal != "") {
+			$this->id_kecamatan->ViewValue = $this->id_kecamatan->lookupCacheOption($curVal);
+			if ($this->id_kecamatan->ViewValue === NULL) { // Lookup from database
+				$filterWrk = "`id_kecamatan`" . SearchString("=", $curVal, DATATYPE_NUMBER, "");
+				$sqlWrk = $this->id_kecamatan->Lookup->getSql(FALSE, $filterWrk, '', $this);
+				$rswrk = Conn()->execute($sqlWrk);
+				if ($rswrk && !$rswrk->EOF) { // Lookup values found
+					$arwrk = [];
+					$arwrk[1] = $rswrk->fields('df');
+					$this->id_kecamatan->ViewValue = $this->id_kecamatan->displayValue($arwrk);
+					$rswrk->Close();
+				} else {
+					$this->id_kecamatan->ViewValue = $this->id_kecamatan->CurrentValue;
+				}
+			}
+		} else {
+			$this->id_kecamatan->ViewValue = NULL;
+		}
 		$this->id_kecamatan->ViewCustomAttributes = "";
 
 		// kode_kbli
-		$this->kode_kbli->ViewValue = $this->kode_kbli->CurrentValue;
-		$this->kode_kbli->ViewValue = FormatNumber($this->kode_kbli->ViewValue, 0, -2, -2, -2);
+		$curVal = strval($this->kode_kbli->CurrentValue);
+		if ($curVal != "") {
+			$this->kode_kbli->ViewValue = $this->kode_kbli->lookupCacheOption($curVal);
+			if ($this->kode_kbli->ViewValue === NULL) { // Lookup from database
+				$filterWrk = "`kode_kbli`" . SearchString("=", $curVal, DATATYPE_NUMBER, "");
+				$sqlWrk = $this->kode_kbli->Lookup->getSql(FALSE, $filterWrk, '', $this);
+				$rswrk = Conn()->execute($sqlWrk);
+				if ($rswrk && !$rswrk->EOF) { // Lookup values found
+					$arwrk = [];
+					$arwrk[1] = $rswrk->fields('df');
+					$arwrk[2] = $rswrk->fields('df2');
+					$arwrk[3] = $rswrk->fields('df3');
+					$this->kode_kbli->ViewValue = $this->kode_kbli->displayValue($arwrk);
+					$rswrk->Close();
+				} else {
+					$this->kode_kbli->ViewValue = $this->kode_kbli->CurrentValue;
+				}
+			}
+		} else {
+			$this->kode_kbli->ViewValue = NULL;
+		}
 		$this->kode_kbli->ViewCustomAttributes = "";
 
 		// id_skala_usaha
-		$this->id_skala_usaha->ViewValue = $this->id_skala_usaha->CurrentValue;
-		$this->id_skala_usaha->ViewValue = FormatNumber($this->id_skala_usaha->ViewValue, 0, -2, -2, -2);
+		$curVal = strval($this->id_skala_usaha->CurrentValue);
+		if ($curVal != "") {
+			$this->id_skala_usaha->ViewValue = $this->id_skala_usaha->lookupCacheOption($curVal);
+			if ($this->id_skala_usaha->ViewValue === NULL) { // Lookup from database
+				$filterWrk = "`id_skala_usaha`" . SearchString("=", $curVal, DATATYPE_NUMBER, "");
+				$sqlWrk = $this->id_skala_usaha->Lookup->getSql(FALSE, $filterWrk, '', $this);
+				$rswrk = Conn()->execute($sqlWrk);
+				if ($rswrk && !$rswrk->EOF) { // Lookup values found
+					$arwrk = [];
+					$arwrk[1] = $rswrk->fields('df');
+					$this->id_skala_usaha->ViewValue = $this->id_skala_usaha->displayValue($arwrk);
+					$rswrk->Close();
+				} else {
+					$this->id_skala_usaha->ViewValue = $this->id_skala_usaha->CurrentValue;
+				}
+			}
+		} else {
+			$this->id_skala_usaha->ViewValue = NULL;
+		}
 		$this->id_skala_usaha->ViewCustomAttributes = "";
 
 		// sysdate
@@ -918,12 +1024,8 @@ class izin_oss extends DbTable
 		$this->NIB->PlaceHolder = RemoveHtml($this->NIB->caption());
 
 		// jenis_pelaku_usaha
-		$this->jenis_pelaku_usaha->EditAttrs["class"] = "form-control";
 		$this->jenis_pelaku_usaha->EditCustomAttributes = "";
-		if (!$this->jenis_pelaku_usaha->Raw)
-			$this->jenis_pelaku_usaha->CurrentValue = HtmlDecode($this->jenis_pelaku_usaha->CurrentValue);
-		$this->jenis_pelaku_usaha->EditValue = $this->jenis_pelaku_usaha->CurrentValue;
-		$this->jenis_pelaku_usaha->PlaceHolder = RemoveHtml($this->jenis_pelaku_usaha->caption());
+		$this->jenis_pelaku_usaha->EditValue = $this->jenis_pelaku_usaha->options(FALSE);
 
 		// nama_pelaku_usaha
 		$this->nama_pelaku_usaha->EditAttrs["class"] = "form-control";
@@ -936,46 +1038,27 @@ class izin_oss extends DbTable
 		// id_jbu
 		$this->id_jbu->EditAttrs["class"] = "form-control";
 		$this->id_jbu->EditCustomAttributes = "";
-		$this->id_jbu->EditValue = $this->id_jbu->CurrentValue;
-		$this->id_jbu->PlaceHolder = RemoveHtml($this->id_jbu->caption());
 
 		// id_pm
 		$this->id_pm->EditAttrs["class"] = "form-control";
 		$this->id_pm->EditCustomAttributes = "";
-		$this->id_pm->EditValue = $this->id_pm->CurrentValue;
-		$this->id_pm->PlaceHolder = RemoveHtml($this->id_pm->caption());
 
 		// id_kecamatan
 		$this->id_kecamatan->EditAttrs["class"] = "form-control";
 		$this->id_kecamatan->EditCustomAttributes = "";
-		$this->id_kecamatan->EditValue = $this->id_kecamatan->CurrentValue;
-		$this->id_kecamatan->PlaceHolder = RemoveHtml($this->id_kecamatan->caption());
 
 		// kode_kbli
 		$this->kode_kbli->EditAttrs["class"] = "form-control";
 		$this->kode_kbli->EditCustomAttributes = "";
-		$this->kode_kbli->EditValue = $this->kode_kbli->CurrentValue;
-		$this->kode_kbli->PlaceHolder = RemoveHtml($this->kode_kbli->caption());
 
 		// id_skala_usaha
 		$this->id_skala_usaha->EditAttrs["class"] = "form-control";
 		$this->id_skala_usaha->EditCustomAttributes = "";
-		$this->id_skala_usaha->EditValue = $this->id_skala_usaha->CurrentValue;
-		$this->id_skala_usaha->PlaceHolder = RemoveHtml($this->id_skala_usaha->caption());
 
 		// sysdate
-		$this->sysdate->EditAttrs["class"] = "form-control";
-		$this->sysdate->EditCustomAttributes = "";
-		$this->sysdate->EditValue = FormatDateTime($this->sysdate->CurrentValue, 8);
-		$this->sysdate->PlaceHolder = RemoveHtml($this->sysdate->caption());
-
 		// id_user
-		$this->id_user->EditAttrs["class"] = "form-control";
-		$this->id_user->EditCustomAttributes = "";
-		$this->id_user->EditValue = $this->id_user->CurrentValue;
-		$this->id_user->PlaceHolder = RemoveHtml($this->id_user->caption());
-
 		// Call Row Rendered event
+
 		$this->Row_Rendered();
 	}
 

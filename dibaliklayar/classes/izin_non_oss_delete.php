@@ -581,8 +581,12 @@ class izin_non_oss_delete extends izin_non_oss
 		$this->createToken();
 
 		// Set up lookup cache
-		// Set up Breadcrumb
+		$this->setupLookupOptions($this->id_jenis_izin);
+		$this->setupLookupOptions($this->id_jbu);
+		$this->setupLookupOptions($this->id_sektor);
+		$this->setupLookupOptions($this->id_subsektor);
 
+		// Set up Breadcrumb
 		$this->setupBreadcrumb();
 
 		// Load key parameters
@@ -775,12 +779,33 @@ class izin_non_oss_delete extends izin_non_oss
 			$this->no_izin->ViewCustomAttributes = "";
 
 			// id_jenis_izin
-			$this->id_jenis_izin->ViewValue = $this->id_jenis_izin->CurrentValue;
-			$this->id_jenis_izin->ViewValue = FormatNumber($this->id_jenis_izin->ViewValue, 0, -2, -2, -2);
+			$curVal = strval($this->id_jenis_izin->CurrentValue);
+			if ($curVal != "") {
+				$this->id_jenis_izin->ViewValue = $this->id_jenis_izin->lookupCacheOption($curVal);
+				if ($this->id_jenis_izin->ViewValue === NULL) { // Lookup from database
+					$filterWrk = "`id_jenis_izin`" . SearchString("=", $curVal, DATATYPE_NUMBER, "");
+					$sqlWrk = $this->id_jenis_izin->Lookup->getSql(FALSE, $filterWrk, '', $this);
+					$rswrk = Conn()->execute($sqlWrk);
+					if ($rswrk && !$rswrk->EOF) { // Lookup values found
+						$arwrk = [];
+						$arwrk[1] = $rswrk->fields('df');
+						$this->id_jenis_izin->ViewValue = $this->id_jenis_izin->displayValue($arwrk);
+						$rswrk->Close();
+					} else {
+						$this->id_jenis_izin->ViewValue = $this->id_jenis_izin->CurrentValue;
+					}
+				}
+			} else {
+				$this->id_jenis_izin->ViewValue = NULL;
+			}
 			$this->id_jenis_izin->ViewCustomAttributes = "";
 
 			// jenis_pemohon
-			$this->jenis_pemohon->ViewValue = $this->jenis_pemohon->CurrentValue;
+			if (strval($this->jenis_pemohon->CurrentValue) != "") {
+				$this->jenis_pemohon->ViewValue = $this->jenis_pemohon->optionCaption($this->jenis_pemohon->CurrentValue);
+			} else {
+				$this->jenis_pemohon->ViewValue = NULL;
+			}
 			$this->jenis_pemohon->ViewCustomAttributes = "";
 
 			// nama_pemohon
@@ -788,18 +813,69 @@ class izin_non_oss_delete extends izin_non_oss
 			$this->nama_pemohon->ViewCustomAttributes = "";
 
 			// id_jbu
-			$this->id_jbu->ViewValue = $this->id_jbu->CurrentValue;
-			$this->id_jbu->ViewValue = FormatNumber($this->id_jbu->ViewValue, 0, -2, -2, -2);
+			$curVal = strval($this->id_jbu->CurrentValue);
+			if ($curVal != "") {
+				$this->id_jbu->ViewValue = $this->id_jbu->lookupCacheOption($curVal);
+				if ($this->id_jbu->ViewValue === NULL) { // Lookup from database
+					$filterWrk = "`id_jbu`" . SearchString("=", $curVal, DATATYPE_NUMBER, "");
+					$sqlWrk = $this->id_jbu->Lookup->getSql(FALSE, $filterWrk, '', $this);
+					$rswrk = Conn()->execute($sqlWrk);
+					if ($rswrk && !$rswrk->EOF) { // Lookup values found
+						$arwrk = [];
+						$arwrk[1] = $rswrk->fields('df');
+						$this->id_jbu->ViewValue = $this->id_jbu->displayValue($arwrk);
+						$rswrk->Close();
+					} else {
+						$this->id_jbu->ViewValue = $this->id_jbu->CurrentValue;
+					}
+				}
+			} else {
+				$this->id_jbu->ViewValue = NULL;
+			}
 			$this->id_jbu->ViewCustomAttributes = "";
 
 			// id_sektor
-			$this->id_sektor->ViewValue = $this->id_sektor->CurrentValue;
-			$this->id_sektor->ViewValue = FormatNumber($this->id_sektor->ViewValue, 0, -2, -2, -2);
+			$curVal = strval($this->id_sektor->CurrentValue);
+			if ($curVal != "") {
+				$this->id_sektor->ViewValue = $this->id_sektor->lookupCacheOption($curVal);
+				if ($this->id_sektor->ViewValue === NULL) { // Lookup from database
+					$filterWrk = "`id_sektor`" . SearchString("=", $curVal, DATATYPE_NUMBER, "");
+					$sqlWrk = $this->id_sektor->Lookup->getSql(FALSE, $filterWrk, '', $this);
+					$rswrk = Conn()->execute($sqlWrk);
+					if ($rswrk && !$rswrk->EOF) { // Lookup values found
+						$arwrk = [];
+						$arwrk[1] = $rswrk->fields('df');
+						$this->id_sektor->ViewValue = $this->id_sektor->displayValue($arwrk);
+						$rswrk->Close();
+					} else {
+						$this->id_sektor->ViewValue = $this->id_sektor->CurrentValue;
+					}
+				}
+			} else {
+				$this->id_sektor->ViewValue = NULL;
+			}
 			$this->id_sektor->ViewCustomAttributes = "";
 
 			// id_subsektor
-			$this->id_subsektor->ViewValue = $this->id_subsektor->CurrentValue;
-			$this->id_subsektor->ViewValue = FormatNumber($this->id_subsektor->ViewValue, 0, -2, -2, -2);
+			$curVal = strval($this->id_subsektor->CurrentValue);
+			if ($curVal != "") {
+				$this->id_subsektor->ViewValue = $this->id_subsektor->lookupCacheOption($curVal);
+				if ($this->id_subsektor->ViewValue === NULL) { // Lookup from database
+					$filterWrk = "`id_subsektor`" . SearchString("=", $curVal, DATATYPE_NUMBER, "");
+					$sqlWrk = $this->id_subsektor->Lookup->getSql(FALSE, $filterWrk, '', $this);
+					$rswrk = Conn()->execute($sqlWrk);
+					if ($rswrk && !$rswrk->EOF) { // Lookup values found
+						$arwrk = [];
+						$arwrk[1] = $rswrk->fields('df');
+						$this->id_subsektor->ViewValue = $this->id_subsektor->displayValue($arwrk);
+						$rswrk->Close();
+					} else {
+						$this->id_subsektor->ViewValue = $this->id_subsektor->CurrentValue;
+					}
+				}
+			} else {
+				$this->id_subsektor->ViewValue = NULL;
+			}
 			$this->id_subsektor->ViewCustomAttributes = "";
 
 			// tanggal_izin
@@ -989,6 +1065,16 @@ class izin_non_oss_delete extends izin_non_oss
 
 			// Set up lookup SQL and connection
 			switch ($fld->FieldVar) {
+				case "x_id_jenis_izin":
+					break;
+				case "x_jenis_pemohon":
+					break;
+				case "x_id_jbu":
+					break;
+				case "x_id_sektor":
+					break;
+				case "x_id_subsektor":
+					break;
 				default:
 					$lookupFilter = "";
 					break;
@@ -1009,6 +1095,14 @@ class izin_non_oss_delete extends izin_non_oss
 
 					// Format the field values
 					switch ($fld->FieldVar) {
+						case "x_id_jenis_izin":
+							break;
+						case "x_id_jbu":
+							break;
+						case "x_id_sektor":
+							break;
+						case "x_id_subsektor":
+							break;
 					}
 					$ar[strval($row[0])] = $row;
 					$rs->moveNext();

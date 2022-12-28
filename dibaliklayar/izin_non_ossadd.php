@@ -65,9 +65,6 @@ loadjs.ready("head", function() {
 				if (elm && !ew.isHidden(elm) && !ew.hasValue(elm))
 					return this.onError(elm, "<?php echo JsEncode(str_replace("%s", $izin_non_oss_add->id_jenis_izin->caption(), $izin_non_oss_add->id_jenis_izin->RequiredErrorMessage)) ?>");
 			<?php } ?>
-				elm = this.getElements("x" + infix + "_id_jenis_izin");
-				if (elm && !ew.checkInteger(elm.value))
-					return this.onError(elm, "<?php echo JsEncode($izin_non_oss_add->id_jenis_izin->errorMessage()) ?>");
 			<?php if ($izin_non_oss_add->jenis_pemohon->Required) { ?>
 				elm = this.getElements("x" + infix + "_jenis_pemohon");
 				if (elm && !ew.isHidden(elm) && !ew.hasValue(elm))
@@ -83,25 +80,16 @@ loadjs.ready("head", function() {
 				if (elm && !ew.isHidden(elm) && !ew.hasValue(elm))
 					return this.onError(elm, "<?php echo JsEncode(str_replace("%s", $izin_non_oss_add->id_jbu->caption(), $izin_non_oss_add->id_jbu->RequiredErrorMessage)) ?>");
 			<?php } ?>
-				elm = this.getElements("x" + infix + "_id_jbu");
-				if (elm && !ew.checkInteger(elm.value))
-					return this.onError(elm, "<?php echo JsEncode($izin_non_oss_add->id_jbu->errorMessage()) ?>");
 			<?php if ($izin_non_oss_add->id_sektor->Required) { ?>
 				elm = this.getElements("x" + infix + "_id_sektor");
 				if (elm && !ew.isHidden(elm) && !ew.hasValue(elm))
 					return this.onError(elm, "<?php echo JsEncode(str_replace("%s", $izin_non_oss_add->id_sektor->caption(), $izin_non_oss_add->id_sektor->RequiredErrorMessage)) ?>");
 			<?php } ?>
-				elm = this.getElements("x" + infix + "_id_sektor");
-				if (elm && !ew.checkInteger(elm.value))
-					return this.onError(elm, "<?php echo JsEncode($izin_non_oss_add->id_sektor->errorMessage()) ?>");
 			<?php if ($izin_non_oss_add->id_subsektor->Required) { ?>
 				elm = this.getElements("x" + infix + "_id_subsektor");
 				if (elm && !ew.isHidden(elm) && !ew.hasValue(elm))
 					return this.onError(elm, "<?php echo JsEncode(str_replace("%s", $izin_non_oss_add->id_subsektor->caption(), $izin_non_oss_add->id_subsektor->RequiredErrorMessage)) ?>");
 			<?php } ?>
-				elm = this.getElements("x" + infix + "_id_subsektor");
-				if (elm && !ew.checkInteger(elm.value))
-					return this.onError(elm, "<?php echo JsEncode($izin_non_oss_add->id_subsektor->errorMessage()) ?>");
 			<?php if ($izin_non_oss_add->tanggal_izin->Required) { ?>
 				elm = this.getElements("x" + infix + "_tanggal_izin");
 				if (elm && !ew.isHidden(elm) && !ew.hasValue(elm))
@@ -135,17 +123,11 @@ loadjs.ready("head", function() {
 				if (elm && !ew.isHidden(elm) && !ew.hasValue(elm))
 					return this.onError(elm, "<?php echo JsEncode(str_replace("%s", $izin_non_oss_add->sysdate->caption(), $izin_non_oss_add->sysdate->RequiredErrorMessage)) ?>");
 			<?php } ?>
-				elm = this.getElements("x" + infix + "_sysdate");
-				if (elm && !ew.checkDateDef(elm.value))
-					return this.onError(elm, "<?php echo JsEncode($izin_non_oss_add->sysdate->errorMessage()) ?>");
 			<?php if ($izin_non_oss_add->id_user->Required) { ?>
 				elm = this.getElements("x" + infix + "_id_user");
 				if (elm && !ew.isHidden(elm) && !ew.hasValue(elm))
 					return this.onError(elm, "<?php echo JsEncode(str_replace("%s", $izin_non_oss_add->id_user->caption(), $izin_non_oss_add->id_user->RequiredErrorMessage)) ?>");
 			<?php } ?>
-				elm = this.getElements("x" + infix + "_id_user");
-				if (elm && !ew.checkInteger(elm.value))
-					return this.onError(elm, "<?php echo JsEncode($izin_non_oss_add->id_user->errorMessage()) ?>");
 
 				// Call Form_CustomValidate event
 				if (!this.Form_CustomValidate(fobj))
@@ -174,6 +156,16 @@ loadjs.ready("head", function() {
 	fizin_non_ossadd.validateRequired = <?php echo Config("CLIENT_VALIDATE") ? "true" : "false" ?>;
 
 	// Dynamic selection lists
+	fizin_non_ossadd.lists["x_id_jenis_izin"] = <?php echo $izin_non_oss_add->id_jenis_izin->Lookup->toClientList($izin_non_oss_add) ?>;
+	fizin_non_ossadd.lists["x_id_jenis_izin"].options = <?php echo JsonEncode($izin_non_oss_add->id_jenis_izin->lookupOptions()) ?>;
+	fizin_non_ossadd.lists["x_jenis_pemohon"] = <?php echo $izin_non_oss_add->jenis_pemohon->Lookup->toClientList($izin_non_oss_add) ?>;
+	fizin_non_ossadd.lists["x_jenis_pemohon"].options = <?php echo JsonEncode($izin_non_oss_add->jenis_pemohon->options(FALSE, TRUE)) ?>;
+	fizin_non_ossadd.lists["x_id_jbu"] = <?php echo $izin_non_oss_add->id_jbu->Lookup->toClientList($izin_non_oss_add) ?>;
+	fizin_non_ossadd.lists["x_id_jbu"].options = <?php echo JsonEncode($izin_non_oss_add->id_jbu->lookupOptions()) ?>;
+	fizin_non_ossadd.lists["x_id_sektor"] = <?php echo $izin_non_oss_add->id_sektor->Lookup->toClientList($izin_non_oss_add) ?>;
+	fizin_non_ossadd.lists["x_id_sektor"].options = <?php echo JsonEncode($izin_non_oss_add->id_sektor->lookupOptions()) ?>;
+	fizin_non_ossadd.lists["x_id_subsektor"] = <?php echo $izin_non_oss_add->id_subsektor->Lookup->toClientList($izin_non_oss_add) ?>;
+	fizin_non_ossadd.lists["x_id_subsektor"].options = <?php echo JsonEncode($izin_non_oss_add->id_subsektor->lookupOptions()) ?>;
 	loadjs.done("fizin_non_ossadd");
 });
 </script>
@@ -212,17 +204,25 @@ $izin_non_oss_add->showMessage();
 		<label id="elh_izin_non_oss_id_jenis_izin" for="x_id_jenis_izin" class="<?php echo $izin_non_oss_add->LeftColumnClass ?>"><?php echo $izin_non_oss_add->id_jenis_izin->caption() ?><?php echo $izin_non_oss_add->id_jenis_izin->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
 		<div class="<?php echo $izin_non_oss_add->RightColumnClass ?>"><div <?php echo $izin_non_oss_add->id_jenis_izin->cellAttributes() ?>>
 <span id="el_izin_non_oss_id_jenis_izin">
-<input type="text" data-table="izin_non_oss" data-field="x_id_jenis_izin" name="x_id_jenis_izin" id="x_id_jenis_izin" size="30" maxlength="11" placeholder="<?php echo HtmlEncode($izin_non_oss_add->id_jenis_izin->getPlaceHolder()) ?>" value="<?php echo $izin_non_oss_add->id_jenis_izin->EditValue ?>"<?php echo $izin_non_oss_add->id_jenis_izin->editAttributes() ?>>
+<div class="input-group">
+	<select class="custom-select ew-custom-select" data-table="izin_non_oss" data-field="x_id_jenis_izin" data-value-separator="<?php echo $izin_non_oss_add->id_jenis_izin->displayValueSeparatorAttribute() ?>" id="x_id_jenis_izin" name="x_id_jenis_izin"<?php echo $izin_non_oss_add->id_jenis_izin->editAttributes() ?>>
+			<?php echo $izin_non_oss_add->id_jenis_izin->selectOptionListHtml("x_id_jenis_izin") ?>
+		</select>
+</div>
+<?php echo $izin_non_oss_add->id_jenis_izin->Lookup->getParamTag($izin_non_oss_add, "p_x_id_jenis_izin") ?>
 </span>
 <?php echo $izin_non_oss_add->id_jenis_izin->CustomMsg ?></div></div>
 	</div>
 <?php } ?>
 <?php if ($izin_non_oss_add->jenis_pemohon->Visible) { // jenis_pemohon ?>
 	<div id="r_jenis_pemohon" class="form-group row">
-		<label id="elh_izin_non_oss_jenis_pemohon" for="x_jenis_pemohon" class="<?php echo $izin_non_oss_add->LeftColumnClass ?>"><?php echo $izin_non_oss_add->jenis_pemohon->caption() ?><?php echo $izin_non_oss_add->jenis_pemohon->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
+		<label id="elh_izin_non_oss_jenis_pemohon" class="<?php echo $izin_non_oss_add->LeftColumnClass ?>"><?php echo $izin_non_oss_add->jenis_pemohon->caption() ?><?php echo $izin_non_oss_add->jenis_pemohon->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
 		<div class="<?php echo $izin_non_oss_add->RightColumnClass ?>"><div <?php echo $izin_non_oss_add->jenis_pemohon->cellAttributes() ?>>
 <span id="el_izin_non_oss_jenis_pemohon">
-<input type="text" data-table="izin_non_oss" data-field="x_jenis_pemohon" name="x_jenis_pemohon" id="x_jenis_pemohon" size="30" maxlength="32" placeholder="<?php echo HtmlEncode($izin_non_oss_add->jenis_pemohon->getPlaceHolder()) ?>" value="<?php echo $izin_non_oss_add->jenis_pemohon->EditValue ?>"<?php echo $izin_non_oss_add->jenis_pemohon->editAttributes() ?>>
+<div id="tp_x_jenis_pemohon" class="ew-template"><input type="radio" class="custom-control-input" data-table="izin_non_oss" data-field="x_jenis_pemohon" data-value-separator="<?php echo $izin_non_oss_add->jenis_pemohon->displayValueSeparatorAttribute() ?>" name="x_jenis_pemohon" id="x_jenis_pemohon" value="{value}"<?php echo $izin_non_oss_add->jenis_pemohon->editAttributes() ?>></div>
+<div id="dsl_x_jenis_pemohon" data-repeatcolumn="5" class="ew-item-list d-none"><div>
+<?php echo $izin_non_oss_add->jenis_pemohon->radioButtonListHtml(FALSE, "x_jenis_pemohon") ?>
+</div></div>
 </span>
 <?php echo $izin_non_oss_add->jenis_pemohon->CustomMsg ?></div></div>
 	</div>
@@ -242,7 +242,12 @@ $izin_non_oss_add->showMessage();
 		<label id="elh_izin_non_oss_id_jbu" for="x_id_jbu" class="<?php echo $izin_non_oss_add->LeftColumnClass ?>"><?php echo $izin_non_oss_add->id_jbu->caption() ?><?php echo $izin_non_oss_add->id_jbu->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
 		<div class="<?php echo $izin_non_oss_add->RightColumnClass ?>"><div <?php echo $izin_non_oss_add->id_jbu->cellAttributes() ?>>
 <span id="el_izin_non_oss_id_jbu">
-<input type="text" data-table="izin_non_oss" data-field="x_id_jbu" name="x_id_jbu" id="x_id_jbu" size="30" maxlength="11" placeholder="<?php echo HtmlEncode($izin_non_oss_add->id_jbu->getPlaceHolder()) ?>" value="<?php echo $izin_non_oss_add->id_jbu->EditValue ?>"<?php echo $izin_non_oss_add->id_jbu->editAttributes() ?>>
+<div class="input-group">
+	<select class="custom-select ew-custom-select" data-table="izin_non_oss" data-field="x_id_jbu" data-value-separator="<?php echo $izin_non_oss_add->id_jbu->displayValueSeparatorAttribute() ?>" id="x_id_jbu" name="x_id_jbu"<?php echo $izin_non_oss_add->id_jbu->editAttributes() ?>>
+			<?php echo $izin_non_oss_add->id_jbu->selectOptionListHtml("x_id_jbu") ?>
+		</select>
+</div>
+<?php echo $izin_non_oss_add->id_jbu->Lookup->getParamTag($izin_non_oss_add, "p_x_id_jbu") ?>
 </span>
 <?php echo $izin_non_oss_add->id_jbu->CustomMsg ?></div></div>
 	</div>
@@ -252,7 +257,13 @@ $izin_non_oss_add->showMessage();
 		<label id="elh_izin_non_oss_id_sektor" for="x_id_sektor" class="<?php echo $izin_non_oss_add->LeftColumnClass ?>"><?php echo $izin_non_oss_add->id_sektor->caption() ?><?php echo $izin_non_oss_add->id_sektor->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
 		<div class="<?php echo $izin_non_oss_add->RightColumnClass ?>"><div <?php echo $izin_non_oss_add->id_sektor->cellAttributes() ?>>
 <span id="el_izin_non_oss_id_sektor">
-<input type="text" data-table="izin_non_oss" data-field="x_id_sektor" name="x_id_sektor" id="x_id_sektor" size="30" maxlength="11" placeholder="<?php echo HtmlEncode($izin_non_oss_add->id_sektor->getPlaceHolder()) ?>" value="<?php echo $izin_non_oss_add->id_sektor->EditValue ?>"<?php echo $izin_non_oss_add->id_sektor->editAttributes() ?>>
+<?php $izin_non_oss_add->id_sektor->EditAttrs->prepend("onchange", "ew.updateOptions.call(this);"); ?>
+<div class="input-group">
+	<select class="custom-select ew-custom-select" data-table="izin_non_oss" data-field="x_id_sektor" data-value-separator="<?php echo $izin_non_oss_add->id_sektor->displayValueSeparatorAttribute() ?>" id="x_id_sektor" name="x_id_sektor"<?php echo $izin_non_oss_add->id_sektor->editAttributes() ?>>
+			<?php echo $izin_non_oss_add->id_sektor->selectOptionListHtml("x_id_sektor") ?>
+		</select>
+</div>
+<?php echo $izin_non_oss_add->id_sektor->Lookup->getParamTag($izin_non_oss_add, "p_x_id_sektor") ?>
 </span>
 <?php echo $izin_non_oss_add->id_sektor->CustomMsg ?></div></div>
 	</div>
@@ -262,7 +273,12 @@ $izin_non_oss_add->showMessage();
 		<label id="elh_izin_non_oss_id_subsektor" for="x_id_subsektor" class="<?php echo $izin_non_oss_add->LeftColumnClass ?>"><?php echo $izin_non_oss_add->id_subsektor->caption() ?><?php echo $izin_non_oss_add->id_subsektor->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
 		<div class="<?php echo $izin_non_oss_add->RightColumnClass ?>"><div <?php echo $izin_non_oss_add->id_subsektor->cellAttributes() ?>>
 <span id="el_izin_non_oss_id_subsektor">
-<input type="text" data-table="izin_non_oss" data-field="x_id_subsektor" name="x_id_subsektor" id="x_id_subsektor" size="30" maxlength="11" placeholder="<?php echo HtmlEncode($izin_non_oss_add->id_subsektor->getPlaceHolder()) ?>" value="<?php echo $izin_non_oss_add->id_subsektor->EditValue ?>"<?php echo $izin_non_oss_add->id_subsektor->editAttributes() ?>>
+<div class="input-group">
+	<select class="custom-select ew-custom-select" data-table="izin_non_oss" data-field="x_id_subsektor" data-value-separator="<?php echo $izin_non_oss_add->id_subsektor->displayValueSeparatorAttribute() ?>" id="x_id_subsektor" name="x_id_subsektor"<?php echo $izin_non_oss_add->id_subsektor->editAttributes() ?>>
+			<?php echo $izin_non_oss_add->id_subsektor->selectOptionListHtml("x_id_subsektor") ?>
+		</select>
+</div>
+<?php echo $izin_non_oss_add->id_subsektor->Lookup->getParamTag($izin_non_oss_add, "p_x_id_subsektor") ?>
 </span>
 <?php echo $izin_non_oss_add->id_subsektor->CustomMsg ?></div></div>
 	</div>
@@ -322,33 +338,6 @@ loadjs.ready(["fizin_non_ossadd", "datetimepicker"], function() {
 <textarea data-table="izin_non_oss" data-field="x_detail_izin" name="x_detail_izin" id="x_detail_izin" cols="35" rows="4" placeholder="<?php echo HtmlEncode($izin_non_oss_add->detail_izin->getPlaceHolder()) ?>"<?php echo $izin_non_oss_add->detail_izin->editAttributes() ?>><?php echo $izin_non_oss_add->detail_izin->EditValue ?></textarea>
 </span>
 <?php echo $izin_non_oss_add->detail_izin->CustomMsg ?></div></div>
-	</div>
-<?php } ?>
-<?php if ($izin_non_oss_add->sysdate->Visible) { // sysdate ?>
-	<div id="r_sysdate" class="form-group row">
-		<label id="elh_izin_non_oss_sysdate" for="x_sysdate" class="<?php echo $izin_non_oss_add->LeftColumnClass ?>"><?php echo $izin_non_oss_add->sysdate->caption() ?><?php echo $izin_non_oss_add->sysdate->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
-		<div class="<?php echo $izin_non_oss_add->RightColumnClass ?>"><div <?php echo $izin_non_oss_add->sysdate->cellAttributes() ?>>
-<span id="el_izin_non_oss_sysdate">
-<input type="text" data-table="izin_non_oss" data-field="x_sysdate" name="x_sysdate" id="x_sysdate" maxlength="10" placeholder="<?php echo HtmlEncode($izin_non_oss_add->sysdate->getPlaceHolder()) ?>" value="<?php echo $izin_non_oss_add->sysdate->EditValue ?>"<?php echo $izin_non_oss_add->sysdate->editAttributes() ?>>
-<?php if (!$izin_non_oss_add->sysdate->ReadOnly && !$izin_non_oss_add->sysdate->Disabled && !isset($izin_non_oss_add->sysdate->EditAttrs["readonly"]) && !isset($izin_non_oss_add->sysdate->EditAttrs["disabled"])) { ?>
-<script>
-loadjs.ready(["fizin_non_ossadd", "datetimepicker"], function() {
-	ew.createDateTimePicker("fizin_non_ossadd", "x_sysdate", {"ignoreReadonly":true,"useCurrent":false,"format":0});
-});
-</script>
-<?php } ?>
-</span>
-<?php echo $izin_non_oss_add->sysdate->CustomMsg ?></div></div>
-	</div>
-<?php } ?>
-<?php if ($izin_non_oss_add->id_user->Visible) { // id_user ?>
-	<div id="r_id_user" class="form-group row">
-		<label id="elh_izin_non_oss_id_user" for="x_id_user" class="<?php echo $izin_non_oss_add->LeftColumnClass ?>"><?php echo $izin_non_oss_add->id_user->caption() ?><?php echo $izin_non_oss_add->id_user->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
-		<div class="<?php echo $izin_non_oss_add->RightColumnClass ?>"><div <?php echo $izin_non_oss_add->id_user->cellAttributes() ?>>
-<span id="el_izin_non_oss_id_user">
-<input type="text" data-table="izin_non_oss" data-field="x_id_user" name="x_id_user" id="x_id_user" size="30" maxlength="11" placeholder="<?php echo HtmlEncode($izin_non_oss_add->id_user->getPlaceHolder()) ?>" value="<?php echo $izin_non_oss_add->id_user->EditValue ?>"<?php echo $izin_non_oss_add->id_user->editAttributes() ?>>
-</span>
-<?php echo $izin_non_oss_add->id_user->CustomMsg ?></div></div>
 	</div>
 <?php } ?>
 </div><!-- /page* -->

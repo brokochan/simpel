@@ -971,7 +971,7 @@ class user_add extends user
 			$this->username->ViewCustomAttributes = "";
 
 			// password
-			$this->password->ViewValue = $this->password->CurrentValue;
+			$this->password->ViewValue = $Language->phrase("PasswordMask");
 			$this->password->ViewCustomAttributes = "";
 
 			// email
@@ -1027,8 +1027,6 @@ class user_add extends user
 			// password
 			$this->password->EditAttrs["class"] = "form-control";
 			$this->password->EditCustomAttributes = "";
-			if (!$this->password->Raw)
-				$this->password->CurrentValue = HtmlDecode($this->password->CurrentValue);
 			$this->password->EditValue = HtmlEncode($this->password->CurrentValue);
 			$this->password->PlaceHolder = RemoveHtml($this->password->caption());
 
@@ -1108,6 +1106,9 @@ class user_add extends user
 			if (!$this->_email->IsDetailKey && $this->_email->FormValue != NULL && $this->_email->FormValue == "") {
 				AddMessage($FormError, str_replace("%s", $this->_email->caption(), $this->_email->RequiredErrorMessage));
 			}
+		}
+		if (!CheckEmail($this->_email->FormValue)) {
+			AddMessage($FormError, $this->_email->errorMessage());
 		}
 		if ($this->_userlevel->Required) {
 			if (!$this->_userlevel->IsDetailKey && $this->_userlevel->FormValue != NULL && $this->_userlevel->FormValue == "") {

@@ -80,6 +80,9 @@ loadjs.ready("head", function() {
 				if (elm && !ew.isHidden(elm) && !ew.hasValue(elm))
 					return this.onError(elm, "<?php echo JsEncode(str_replace("%s", $user_edit->_email->caption(), $user_edit->_email->RequiredErrorMessage)) ?>");
 			<?php } ?>
+				elm = this.getElements("x" + infix + "__email");
+				if (elm && !ew.checkEmail(elm.value))
+					return this.onError(elm, "<?php echo JsEncode($user_edit->_email->errorMessage()) ?>");
 			<?php if ($user_edit->_userlevel->Required) { ?>
 				elm = this.getElements("x" + infix + "__userlevel");
 				if (elm && !ew.isHidden(elm) && !ew.hasValue(elm))
@@ -172,7 +175,7 @@ $user_edit->showMessage();
 		<label id="elh_user_password" for="x_password" class="<?php echo $user_edit->LeftColumnClass ?>"><?php echo $user_edit->password->caption() ?><?php echo $user_edit->password->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
 		<div class="<?php echo $user_edit->RightColumnClass ?>"><div <?php echo $user_edit->password->cellAttributes() ?>>
 <span id="el_user_password">
-<input type="text" data-table="user" data-field="x_password" name="x_password" id="x_password" size="30" maxlength="32" placeholder="<?php echo HtmlEncode($user_edit->password->getPlaceHolder()) ?>" value="<?php echo $user_edit->password->EditValue ?>"<?php echo $user_edit->password->editAttributes() ?>>
+<div class="input-group"><input type="password" name="x_password" id="x_password" autocomplete="new-password" data-field="x_password" value="<?php echo $user_edit->password->EditValue ?>" size="30" maxlength="32" placeholder="<?php echo HtmlEncode($user_edit->password->getPlaceHolder()) ?>"<?php echo $user_edit->password->editAttributes() ?>><div class="input-group-append"><button type="button" class="btn btn-default ew-toggle-password" onclick="ew.togglePassword(event);"><i class="fas fa-eye"></i></button></div></div>
 </span>
 <?php echo $user_edit->password->CustomMsg ?></div></div>
 	</div>

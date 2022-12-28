@@ -161,7 +161,7 @@ $izin_oss_list->ListOptions->render("header", "left");
 		<th data-name="jenis_pelaku_usaha" class="<?php echo $izin_oss_list->jenis_pelaku_usaha->headerCellClass() ?>"><div id="elh_izin_oss_jenis_pelaku_usaha" class="izin_oss_jenis_pelaku_usaha"><div class="ew-table-header-caption"><?php echo $izin_oss_list->jenis_pelaku_usaha->caption() ?></div></div></th>
 	<?php } else { ?>
 		<th data-name="jenis_pelaku_usaha" class="<?php echo $izin_oss_list->jenis_pelaku_usaha->headerCellClass() ?>"><div class="ew-pointer" onclick="ew.sort(event, '<?php echo $izin_oss_list->SortUrl($izin_oss_list->jenis_pelaku_usaha) ?>', 1);"><div id="elh_izin_oss_jenis_pelaku_usaha" class="izin_oss_jenis_pelaku_usaha">
-			<div class="ew-table-header-btn"><span class="ew-table-header-caption"><?php echo $izin_oss_list->jenis_pelaku_usaha->caption() ?><?php echo $Language->phrase("SrchLegend") ?></span><span class="ew-table-header-sort"><?php if ($izin_oss_list->jenis_pelaku_usaha->getSort() == "ASC") { ?><i class="fas fa-sort-up"></i><?php } elseif ($izin_oss_list->jenis_pelaku_usaha->getSort() == "DESC") { ?><i class="fas fa-sort-down"></i><?php } ?></span></div>
+			<div class="ew-table-header-btn"><span class="ew-table-header-caption"><?php echo $izin_oss_list->jenis_pelaku_usaha->caption() ?></span><span class="ew-table-header-sort"><?php if ($izin_oss_list->jenis_pelaku_usaha->getSort() == "ASC") { ?><i class="fas fa-sort-up"></i><?php } elseif ($izin_oss_list->jenis_pelaku_usaha->getSort() == "DESC") { ?><i class="fas fa-sort-down"></i><?php } ?></span></div>
 		</div></div></th>
 	<?php } ?>
 <?php } ?>
