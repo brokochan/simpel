@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en" class="light-theme">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--plugins-->
+    <link href="assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
+    <link href="assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
+    <link href="assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
+
+    <!-- CSS Files -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-extended.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+    <!--Theme Styles-->
+    <link href="assets/css/dark-theme.css" rel="stylesheet" />
+    <link href="assets/css/semi-dark.css" rel="stylesheet" />
+    <link href="assets/css/header-colors.css" rel="stylesheet" />
+
+    <!-- animate -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <title>SYN-UI - Bootstrap Admin Template</title>
+  <style>
+    body {
+      background-color: skyblue;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      background-image: url('../assets/img/pemda.png');
+      background-position-x: -200px;
+      background-repeat: no-repeat;
+      background-size: 1980px;
+    }
+
+    h1.title {
+      text-shadow: 0 0 3px #645858, 0 0 5px #414153;
+      color: white;
+    }
+    .back {
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="row mt-4"></div>
+    <div class="row mt-4"></div>
+
+        <div class="row text-center mb-3 mt-4">
+          <div class="col">
+            <h1 class="title animate__animated animate__fadeInUp animate__delay-1s">
+              <a href="index.html" class="lni lni-arrow-left-circle back animate__animated animate__shakeX animate__delay-2s"></a> Kecamatan Bayongbong
+            </h1>
+          </div>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-md-5 animate__animated animate__fadeInBottomLeft">
+            <div class="card radius-10 w-100">
+              <div class="card-body">
+                <div class="d-flex align-items-center mb-3">
+                  <h3 class="mb-0">Izin OSS</h6>
+                </div>
+                <div class="chart-container3">
+                  <div class="piechart-legend">
+                    <h2 class="mb-1">1283 NIB</h2>
+                    <h6 class="mb-0">Total Izin OSS</h6>
+                  </div>
+                  <canvas id="chart1"></canvas>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item d-flex justify-content-between align-items-center border-top">
+                    NIB
+                    <span class="badge bg-tiffany rounded-pill">1283</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5 animate__animated animate__fadeInBottomRight">
+            <div class="card radius-10 w-100">
+              <div class="card-body">
+                <div class="d-flex align-items-center mb-3">
+                  <h3 class="mb-0">Izin Non-OSS</h6>
+                </div>
+                <div class="chart-container3">
+                  <div class="piechart-legend">
+                    <h2 class="mb-1">530 Izin</h2>
+                    <h6 class="mb-0">Total Izin Non-OSS</h6>
+                  </div>
+                  <canvas id="chart2"></canvas>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item d-flex justify-content-between align-items-center border-top">
+                    Trayek
+                    <span class="badge bg-tiffany rounded-pill">155</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    SIPP
+                    <span class="badge bg-danger rounded-pill">120</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    SIPB
+                    <span class="badge bg-success rounded-pill">110</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    SIPA
+                    <span class="badge bg-warning rounded-pill">100</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div><!--end row-->
+
+  </div>
+
+    <!-- JS Files-->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
+    <script src="assets/plugins/metismenu/js/metisMenu.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <!--plugins-->
+    <script src="assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+    <script src="assets/plugins/chartjs/chart.min.js"></script>
+    <script src="assets/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
+    <script src="assets/js/index2.js"></script>
+    <!-- Main JS-->
+    <script src="assets/js/main.js"></script>
+
+
+</body>
+
+</html>
