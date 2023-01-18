@@ -26,7 +26,7 @@
     <!-- animate -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
-  <title>SYN-UI - Bootstrap Admin Template</title>
+  <title>SIM</title>
   <style>
     body {
       background-color: skyblue;
@@ -52,12 +52,14 @@
   <div class="container">
 
     <div class="row mt-4"></div>
-    <div class="row mt-4"></div>
 
         <div class="row text-center mb-3 mt-4">
           <div class="col">
             <h1 class="title animate__animated animate__fadeInUp animate__delay-1s">
-              <a href="index.html" class="lni lni-arrow-left-circle back animate__animated animate__shakeX animate__delay-2s"></a> Kecamatan Bayongbong
+              <a href="index.html" class="lni lni-arrow-left-circle back animate__animated animate__shakeX animate__delay-2s"></a> 
+              <span id="title">
+                Kecamatan Bayongbong
+              </span>
             </h1>
           </div>
         </div>
@@ -87,6 +89,9 @@
                   <br>
                   <div style="font-size:20px;">&nbsp;</div>
                 </ul>
+                <div class="text-center">
+                  <button id="btn-oss" class="btn btn-primary">Selengkapnya...</button>
+                </div>
               </div>
             </div>
           </div>
@@ -121,6 +126,9 @@
                     <span class="badge bg-warning rounded-pill">100</span>
                   </li>
                 </ul>
+                <div class="text-center">
+                  <button id="btn-nonoss" class="btn btn-primary">Selengkapnya...</button>
+                </div>
               </div>
             </div>
           </div>
@@ -142,6 +150,100 @@
     <!-- Main JS-->
     <script src="assets/js/main.js"></script>
 
+  <script>
+    let searchParams = new URLSearchParams(window.location.search);
+    let param = searchParams.get('kec');
+
+    if (param == 1)	{
+        $('#title').html("Kecamatan Banjarwangi");
+    } else if (param == 2) {
+        $('#title').html("Kecamatan Banyuresmi");
+    } else if (param == 3) {
+        $('#title').html("Kecamatan Bayongbong");
+    } else if (param == 4) {
+        $('#title').html("Kecamatan Blubur Limbangan");
+    } else if (param == 5) {
+        $('#title').html("Kecamatan Bungbulang");
+    } else if (param == 6) {
+        $('#title').html("Kecamatan Caringin");
+    } else if (param == 7) {
+        $('#title').html("Kecamatan Cibalong");
+    } else if (param == 8) {
+        $('#title').html("Kecamatan Cibatu");
+    } else if (param == 9) {
+        $('#title').html("Kecamatan Cibiuk");
+    } else if (param == 10) {
+        $('#title').html("Kecamatan Cigedug");
+    } else if (param == 11) {
+        $('#title').html("Kecamatan Cihurip");
+    } else if (param == 12) {
+        $('#title').html("Kecamatan Cikajang");
+    } else if (param == 13) {
+        $('#title').html("Kecamatan Cikelet");
+    } else if (param == 14) {
+        $('#title').html("Kecamatan Cilawu");
+    } else if (param == 15) {
+        $('#title').html("Kecamatan Cisewu");
+    } else if (param == 16) {
+        $('#title').html("Kecamatan Cisompet");
+    } else if (param == 17) {
+        $('#title').html("Kecamatan Cisurupan");
+    } else if (param == 18) {
+        $('#title').html("Kecamatan Garut Kota");
+    } else if (param == 19) {
+        $('#title').html("Kecamatan Kadungora");
+    } else if (param == 20) {
+        $('#title').html("Kecamatan Karangpawitan");
+    } else if (param == 21) {
+        $('#title').html("Kecamatan Karangtengah");
+    } else if (param == 22) {
+        $('#title').html("Kecamatan Kersamanah");
+    } else if (param == 23) {
+        $('#title').html("Kecamatan Leles");
+    } else if (param == 24) {
+        $('#title').html("Kecamatan Leuwigoong");
+    } else if (param == 25) {
+        $('#title').html("Kecamatan Malangbong");
+    } else if (param == 26) {
+        $('#title').html("Kecamatan Mekarmukti");
+    } else if (param == 27) {
+        $('#title').html("Kecamatan Pakenjeng");
+    } else if (param == 28) {
+        $('#title').html("Kecamatan Pameungpeuk");
+    } else if (param == 29) {
+        $('#title').html("Kecamatan Pamulihan");
+    } else if (param == 30) {
+        $('#title').html("Kecamatan Pangatikan");
+    } else if (param == 31) {
+        $('#title').html("Kecamatan Pasirwangi");
+    } else if (param == 32) {
+        $('#title').html("Kecamatan Peundeuy");
+    } else if (param == 33) {
+        $('#title').html("Kecamatan Samarang");
+    } else if (param == 34) {
+        $('#title').html("Kecamatan Selaawi");
+    } else if (param == 35) {
+        $('#title').html("Kecamatan Singajaya");
+    } else if (param == 36) {
+        $('#title').html("Kecamatan Sucinaraja");
+    } else if (param == 37) {
+        $('#title').html("Kecamatan Sukaresmi");
+    } else if (param == 38) {
+        $('#title').html("Kecamatan Sukawening");
+    } else if (param == 39) {
+        $('#title').html("Kecamatan Talegong");
+    } else if (param == 40) {
+        $('#title').html("Kecamatan Tarogong Kaler");
+    } else if (param == 41) {
+        $('#title').html("Kecamatan Tarogong Kidul");
+    } else if (param == 42) {
+        $('#title').html("Kecamatan Wanaraja");
+    } else {}
+    
+    $('#btn-oss').on('click', function(){
+      window.location="https://dpmpt.garutkab.go.id/dashboardinvest/admin/minat_investasilist.php?cmd=search&t=minat_investasi&z_id_kecamatan=%3D&x_id_kecamatan="+param+"&psearch=&psearchtype=";
+    });
+  </script>
 
 </body>
 
