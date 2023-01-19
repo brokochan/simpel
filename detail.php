@@ -1,3 +1,10 @@
+<?php 
+include "koneksi.php"; 
+$param = $_GET['kec'];
+$kec = $koneksi->query("select count(*) as total from minat_investasi where id_kecamatan = $param");
+$tkec = $kec->fetch_assoc();
+$total = $tkec['total'];
+?>
 <!doctype html>
 <html lang="en" class="light-theme">
 
@@ -31,7 +38,7 @@
     body {
       background-color: skyblue;
       font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-      background-image: url('../assets/img/pemda.png');
+      background-image: url('assets/img/pemda.png');
       background-position-x: -200px;
       background-repeat: no-repeat;
       background-size: 1980px;
@@ -56,7 +63,7 @@
         <div class="row text-center mb-3 mt-4">
           <div class="col">
             <h1 class="title animate__animated animate__fadeInUp animate__delay-1s">
-              <a href="index.html" class="lni lni-arrow-left-circle back animate__animated animate__shakeX animate__delay-2s"></a> 
+              <a href="index.php" class="lni lni-arrow-left-circle back animate__animated animate__shakeX animate__delay-2s"></a> 
               <span id="title">
                 Kecamatan Bayongbong
               </span>
@@ -73,7 +80,7 @@
                 </div>
                 <div class="chart-container3">
                   <div class="piechart-legend">
-                    <h2 class="mb-1">1283 NIB</h2>
+                    <h2 class="mb-1"><?php echo $total; ?> NIB</h2>
                     <h6 class="mb-0">Total Izin OSS</h6>
                   </div>
                   <canvas id="chart1"></canvas>
@@ -81,7 +88,7 @@
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item d-flex justify-content-between align-items-center border-top">
                     NIB
-                    <span class="badge bg-tiffany rounded-pill">1283</span>
+                    <span class="badge bg-tiffany rounded-pill"><?php echo $total; ?></span>
                   </li>
                   <br>
                   <br>
@@ -146,7 +153,7 @@
     <script src="assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
     <script src="assets/plugins/chartjs/chart.min.js"></script>
     <script src="assets/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
-    <script src="assets/js/index2.js"></script>
+    <!-- <script src="assets/js/index2.js"></script> -->
     <!-- Main JS-->
     <script src="assets/js/main.js"></script>
 
@@ -244,6 +251,99 @@
       window.location="https://dpmpt.garutkab.go.id/dashboardinvest/admin/minat_investasilist.php?cmd=search&t=minat_investasi&z_id_kecamatan=%3D&x_id_kecamatan="+param+"&psearch=&psearchtype=";
     });
   </script>
+
+<script>
+      $(function() {
+
+        const total = <?php echo $total; ?>;
+
+// chart1
+var ctx = document.getElementById('chart1').getContext('2d');
+
+var gradientStroke1 = ctx.createLinearGradient(0, 0, 0, 300);
+    gradientStroke1.addColorStop(0, '#005bea');
+    gradientStroke1.addColorStop(1, '#00c6fb');
+
+var gradientStroke2 = ctx.createLinearGradient(0, 0, 0, 300);
+    gradientStroke2.addColorStop(0, '#ff6a00');  
+    gradientStroke2.addColorStop(1, '#ee0979'); 
+
+var gradientStroke3 = ctx.createLinearGradient(0, 0, 0, 300);
+    gradientStroke3.addColorStop(0, '#17ad37');  
+    gradientStroke3.addColorStop(1, '#98ec2d'); 
+
+var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: ['NIB'],
+        datasets: [{
+            data: [total],
+            backgroundColor: [
+                gradientStroke1,
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        maintainAspectRatio: false,
+        cutout: 110,
+        plugins: {
+        legend: {
+            display: false,
+        }
+    }
+        
+    }
+});
+   
+// chart2
+var ctx = document.getElementById('chart2').getContext('2d');
+
+var gradientStroke1 = ctx.createLinearGradient(0, 0, 0, 300);
+    gradientStroke1.addColorStop(0, '#005bea');
+    gradientStroke1.addColorStop(1, '#00c6fb');
+
+var gradientStroke2 = ctx.createLinearGradient(0, 0, 0, 300);
+    gradientStroke2.addColorStop(0, '#FC2F8C'); 
+    gradientStroke2.addColorStop(1, '#FC2F2F');  
+
+var gradientStroke3 = ctx.createLinearGradient(0, 0, 0, 300);
+    gradientStroke3.addColorStop(0, '#17ad37');  
+    gradientStroke3.addColorStop(1, '#98ec2d'); 
+
+var gradientStroke4 = ctx.createLinearGradient(0, 0, 0, 300);
+    gradientStroke4.addColorStop(0, '#FF5733');  
+    gradientStroke4.addColorStop(1, '#FFB447'); 
+
+var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: ['Trayek', 'SIPP', 'SIPB', 'SIPA'],
+        datasets: [{
+            data: [155, 120, 110, 100],
+            backgroundColor: [
+                gradientStroke1,
+                gradientStroke2,
+                gradientStroke3,
+                gradientStroke4,
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        maintainAspectRatio: false,
+        cutout: 110,
+        plugins: {
+        legend: {
+            display: false,
+        }
+    }
+        
+    }
+});
+
+});
+    </script>
 
 </body>
 
