@@ -248,7 +248,7 @@ $total = $tkec['total'];
     } else {}
     
     $('#btn-oss').on('click', function(){
-      window.location="https://dpmpt.garutkab.go.id/dashboardinvest/admin/minat_investasilist.php?cmd=search&t=minat_investasi&z_id_kecamatan=%3D&x_id_kecamatan="+param+"&psearch=&psearchtype=";
+      window.location="https://dpmpt.garutkab.go.id/dashboardinvest/admin/data_niblist.php?cmd=search&t=minat_investasi&z_id_kecamatan=%3D&x_id_kecamatan="+param+"&psearch=&psearchtype=";
     });
   </script>
 
